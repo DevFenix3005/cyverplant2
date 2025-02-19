@@ -1,0 +1,28 @@
+spring:
+  application.name: Producer
+  kafka:
+    bootstrap-servers: "pkc-619z3.us-east1.gcp.confluent.cloud:9092"
+    properties:
+      basic.auth:
+        credentials.source: USER_INFO
+        user.info: GJKSEAYHNSTVT4Y5:3mjztK3g3d4Is5cev9f2F2Q212iHBxVnfqMq2h5mZU4JgKecXRnAKDeMISgWgjXQ
+      schema.registry.url: https://psrc-6ood18.us-east1.gcp.confluent.cloud
+      security.protocol: SASL_SSL
+      sasl:
+        mechanism: PLAIN
+        jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='56SAH4PQWTETRQQ6' password='UgooIWk2m7Zbs7w8DRWijQIZ61XV4jeW8hUnFpg6gLetEe1ev+2JtjU11xB2wvFW';
+      session.timeout.ms: 45000
+    consumer:
+      group-id: spring-boot-consumer-6
+      topic: "plant-avro"
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        specific.avro:
+          reader: true
+          value.type: com.cyver.plant.commons.avro.EnvironmentalMeasurementAvro
+
+
+
+client.id: "ccloud-springboot-client-a7fad8aa-c867-44b1-9ab0-491c708d4db7"
