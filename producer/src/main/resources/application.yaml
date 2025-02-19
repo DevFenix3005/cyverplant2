@@ -1,0 +1,30 @@
+spring:
+  application.name: Producer
+  kafka:
+    bootstrap-servers: "pkc-619z3.us-east1.gcp.confluent.cloud:9092"
+    properties:
+      basic.auth:
+        credentials.source: USER_INFO
+        user.info: GJKSEAYHNSTVT4Y5:3mjztK3g3d4Is5cev9f2F2Q212iHBxVnfqMq2h5mZU4JgKecXRnAKDeMISgWgjXQ
+      schema.registry.url: https://psrc-6ood18.us-east1.gcp.confluent.cloud
+      security.protocol: SASL_SSL
+      sasl:
+        mechanism: PLAIN
+        jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='56SAH4PQWTETRQQ6' password='UgooIWk2m7Zbs7w8DRWijQIZ61XV4jeW8hUnFpg6gLetEe1ev+2JtjU11xB2wvFW';
+      session.timeout.ms: 45000
+    producer:
+      client-id: spring-boot-producer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+
+plant:
+  cron: "0 */1 * * * *"
+  user: "fenix3009"
+  nodes:
+    - name: "node1"
+      url: "http://192.168.0.13:8080"
+      minSoilMoisture: 60
+  topic: "plant-avro"
+
+
+client.id: "ccloud-springboot-client-a7fad8aa-c867-44b1-9ab0-491c708d4db7"
