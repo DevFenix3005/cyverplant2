@@ -1,0 +1,38 @@
+{
+  "type": "record",
+  "name": "EnvironmentalMeasurementAvro",
+  "namespace": "com.cyver.plant.commons.avro",
+  "fields": [
+    {
+      "name": "heatIndex",
+      "type": "float"
+    },
+    {
+      "name": "humidity",
+      "type": "float"
+    },
+    {
+      "name": "soilMoisture",
+      "type": "int"
+    },
+    {
+      "name": "temperature",
+      "type": "float"
+    },
+    {
+      "name": "temperatureUnit",
+      "type": {
+        "type": "enum",
+        "name": "InnerTemperatureUnit",
+        "symbols": [
+          "CELSIUS",
+          "FAHRENHEIT"
+        ]
+      }
+    },
+    {
+      "name": "timestamp",
+      "type": "long"
+    }
+  ]
+}
