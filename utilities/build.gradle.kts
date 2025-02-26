@@ -9,7 +9,7 @@ plugins {
 dependencies {
     api("com.google.guava:guava")
 
-    implementation(project(":commons"))
+    api(project(":commons"))
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.apache.avro:avro:1.12.0")
     implementation("org.mapstruct:mapstruct:1.6.3")

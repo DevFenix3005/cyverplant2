@@ -21,7 +21,6 @@ configurations {
 
 dependencies {
     implementation(project(":utilities"))
-    implementation(project(":commons"))
 
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")

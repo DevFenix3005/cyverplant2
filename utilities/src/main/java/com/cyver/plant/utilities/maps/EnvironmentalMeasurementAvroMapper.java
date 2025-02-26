@@ -11,9 +11,6 @@ import com.cyver.plant.commons.node.NodeMeasurement;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING, imports = { InnerTemperatureUnit.class })
 public interface EnvironmentalMeasurementAvroMapper {
 
-    @Mapping(target = "temperatureUnit", expression = "java(InnerTemperatureUnit.CELSIUS)")
     @Mapping(target = "timestamp", expression = "java(java.time.Instant.now().toEpochMilli())")
-    @Mapping(target = "temperature", source = "celsius")
-    @Mapping(target = "heatIndex", source = "heatIndexCelsius")
     EnvironmentalMeasurementAvro toAvroMessage(NodeMeasurement nodeMeasurement);
 }

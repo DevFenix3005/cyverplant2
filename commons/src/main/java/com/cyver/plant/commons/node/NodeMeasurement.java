@@ -6,39 +6,25 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.Data;
-
-@Data
-public class NodeMeasurement implements Serializable {
+public record NodeMeasurement(String temperatureUnit, float temperature, float humidity, float heatIndex, int light, int soilMoisture)
+        implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8975676324202141628L;
 
-    private final int soilMoisture;
-
-    private final float humidity;
-
-    private final float celsius;
-
-    private final float fahrenheit;
-
-    private final float heatIndexCelsius;
-
-    private final float heatIndexFahrenheit;
-
     @JsonCreator
     public NodeMeasurement(
-            @JsonProperty("soil") final int soilMoisture,
+            @JsonProperty("temperature_unit") final String temperatureUnit,
+            @JsonProperty("temperature") final float temperature,
             @JsonProperty("humidity") final float humidity,
-            @JsonProperty("celsius") final float celsius,
-            @JsonProperty("fahrenheit") final float fahrenheit,
-            @JsonProperty("heat_index_celsius") final float heatIndexCelsius,
-            @JsonProperty("heat_index_fahrenheit") final float heatIndexFahrenheit) {
-        this.soilMoisture = soilMoisture;
+            @JsonProperty("heat_index") final float heatIndex,
+            @JsonProperty("light") final int light,
+            @JsonProperty("soil") final int soilMoisture) {
+        this.temperatureUnit = temperatureUnit;
+        this.temperature = temperature;
         this.humidity = humidity;
-        this.celsius = celsius;
-        this.fahrenheit = fahrenheit;
-        this.heatIndexCelsius = heatIndexCelsius;
-        this.heatIndexFahrenheit = heatIndexFahrenheit;
+        this.heatIndex = heatIndex;
+        this.light = light;
+        this.soilMoisture = soilMoisture;
     }
 }

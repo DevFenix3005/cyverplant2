@@ -9,16 +9,27 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import com.cyver.plant.commons.avro.EnvironmentalMeasurementAvro;
+import com.cyver.plant.commons.entities.EnvironmentalMeasurement;
+import com.cyver.plant.utilities.maps.EnvironmentalMeasurementEntityMapper;
 
 @Service
 public class EnvironmentalMeasurementAvroConsumerService {
 
     private final Logger logger = LoggerFactory.getLogger(EnvironmentalMeasurementAvroConsumerService.class);
 
+    private final EnvironmentalMeasurementEntityMapper environmentalMeasurementEntityMapper;
+
+    public EnvironmentalMeasurementAvroConsumerService(final EnvironmentalMeasurementEntityMapper environmentalMeasurementEntityMapper) {
+        this.environmentalMeasurementEntityMapper = environmentalMeasurementEntityMapper;
+    }
+
     @KafkaListener(topics = "${spring.kafka.consumer.topic}", groupId = "${spring.kafka.consumer.group-id}")
     public void listen(@Payload final EnvironmentalMeasurementAvro value,
             @Header(KafkaHeaders.RECEIVED_KEY) final String key,
             @Header(KafkaHeaders.RECEIVED_TOPIC) final String topic) {
         logger.info("Consumed event from topic {}: key = {} | value = {}", topic, key, value);
+
+        EnvironmentalMeasurement environmentalMeasurement = environmentalMeasurementEntityMapper.toEntity(value);
+
     }
 }

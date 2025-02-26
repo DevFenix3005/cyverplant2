@@ -16,6 +16,9 @@ repositories {
 dependencies {
     constraints {
         // Define dependency versions as constraints
+        // https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
+        implementation("jakarta.persistence:jakarta.persistence-api:3.2.0")
+        implementation("io.hypersistence:hypersistence-utils-hibernate-63:3.9.2")
         implementation("org.apache.commons:commons-text:1.12.0")
         implementation("org.apache.avro:avro:1.12.0")
         implementation("io.confluent:kafka-avro-serializer:7.8.0")
