@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = { "com.cyver.plant.consumer", "com.cyver.plant.utilities" })
 public class ConsumerApplication {
 
     public static void main(String[] args) {

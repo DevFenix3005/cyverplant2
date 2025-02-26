@@ -3,19 +3,18 @@
  */
 package com.cyver.plant.app;
 
-import com.cyver.plant.list.LinkedList;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import static com.cyver.plant.utilities.StringUtils.join;
-import static com.cyver.plant.utilities.StringUtils.split;
-import static com.cyver.plant.app.MessageUtils.getMessage;
-
-import org.apache.commons.text.WordUtils;
-
+@SpringBootApplication(scanBasePackages = { "com.cyver.plant.app", "com.cyver.plant.database" })
+@EntityScan(basePackages = "com.cyver.plant.commons.entities")
+@EnableJpaRepositories(basePackages = "com.cyver.plant.database")
 public class App {
+
     public static void main(String[] args) {
-        LinkedList tokens;
-        tokens = split(getMessage());
-        String result = join(tokens);
-        System.out.println(WordUtils.capitalize(result));
+        SpringApplication.run(App.class, args);
     }
+
 }

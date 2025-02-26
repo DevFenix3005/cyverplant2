@@ -8,6 +8,8 @@ plugins {
 }
 
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter")
+    api("jakarta.persistence:jakarta.persistence-api")
     api("org.apache.avro:avro")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

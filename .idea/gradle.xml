@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -25,7 +26,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/commons" />
             <option value="$PROJECT_DIR$/consumer" />
-            <option value="$PROJECT_DIR$/list" />
+            <option value="$PROJECT_DIR$/database" />
             <option value="$PROJECT_DIR$/producer" />
             <option value="$PROJECT_DIR$/utilities" />
           </set>
