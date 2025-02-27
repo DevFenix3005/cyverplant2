@@ -8,7 +8,7 @@ plugins {
 
 
 dependencies {
-    implementation(project(":commons"))
+    api(project(":commons"))
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("org.postgresql:postgresql")
 }

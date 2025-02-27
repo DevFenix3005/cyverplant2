@@ -11,7 +11,7 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 
 import com.cyver.plant.commons.avro.EnvironmentalMeasurementAvro;
-import com.cyver.plant.commons.node.NodeMeasurement;
+import com.cyver.plant.commons.node.NodeMeasurementResponse;
 import com.cyver.plant.producer.configuration.PlantProperties;
 import com.cyver.plant.producer.service.PlantMeasurementProducerService;
 import com.cyver.plant.utilities.maps.EnvironmentalMeasurementAvroMapper;
@@ -23,24 +23,27 @@ public class PlantMeasurementProducerServiceImpl implements PlantMeasurementProd
 
     private final KafkaTemplate<String, EnvironmentalMeasurementAvro> kafkaTemplate;
 
-    private final EnvironmentalMeasurementAvroMapper measurementAvroMapper;
+    private final EnvironmentalMeasurementAvroMapper environmentalMeasurementAvroMapper;
 
     private final PlantProperties plantProperties;
 
     @Autowired
-    public PlantMeasurementProducerServiceImpl(final KafkaTemplate<String, EnvironmentalMeasurementAvro> kafkaTemplate,
-            final EnvironmentalMeasurementAvroMapper measurementAvroMapper, final PlantProperties plantProperties) {
+    public PlantMeasurementProducerServiceImpl(
+            final KafkaTemplate<String, EnvironmentalMeasurementAvro> kafkaTemplate,
+            final EnvironmentalMeasurementAvroMapper environmentalMeasurementAvroMapper,
+            final PlantProperties plantProperties) {
         this.kafkaTemplate = kafkaTemplate;
-        this.measurementAvroMapper = measurementAvroMapper;
+        this.environmentalMeasurementAvroMapper = environmentalMeasurementAvroMapper;
         this.plantProperties = plantProperties;
     }
 
     @Override
-    public void sendMessage(final NodeMeasurement nodeMeasurement) {
+    public void sendMessage(final NodeMeasurementResponse nodeMeasurementResponse) {
 
         final String topic = plantProperties.getTopic();
         final String key = UUID.randomUUID().toString();
-        final EnvironmentalMeasurementAvro environmentalMeasurementAvro = measurementAvroMapper.toAvroMessage(nodeMeasurement);
+        final EnvironmentalMeasurementAvro environmentalMeasurementAvro =
+                environmentalMeasurementAvroMapper.toAvroMessage(nodeMeasurementResponse);
 
         CompletableFuture<SendResult<String, EnvironmentalMeasurementAvro>> future =
                 kafkaTemplate.send(topic, key, environmentalMeasurementAvro);

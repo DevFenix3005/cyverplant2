@@ -23,7 +23,9 @@ plant:
   topic: ${KAFKA_TOPIC}
   nodes:
     - name: "node1"
-      url: "http://192.168.0.13:8080"
+      url: "http://192.168.0.13:8080/measurement"
       minSoilMoisture: 60
 
 client.id: "ccloud-springboot-client-a7fad8aa-c867-44b1-9ab0-491c708d4db7"
+server:
+  port: 8081

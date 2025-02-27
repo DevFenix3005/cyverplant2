@@ -8,8 +8,8 @@ plugins {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    api("jakarta.persistence:jakarta.persistence-api")
+    api("org.springframework.boot:spring-boot-starter")
+    api("org.hibernate.orm:hibernate-core")
     api("org.apache.avro:avro")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

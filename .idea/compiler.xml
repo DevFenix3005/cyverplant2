@@ -9,8 +9,8 @@
         </processorPath>
         <module name="plant-ecosystem.commons.main" />
         <module name="plant-ecosystem.producer.main" />
+        <module name="plant-ecosystem.data.main" />
         <module name="plant-ecosystem.consumer.main" />
-        <module name="plant-ecosystem.app.main" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
