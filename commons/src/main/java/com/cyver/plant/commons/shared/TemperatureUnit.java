@@ -1,4 +1,4 @@
-package com.cyver.plant.commons.entities;
+package com.cyver.plant.commons.shared;
 
 public enum TemperatureUnit {
     CELSIUS,

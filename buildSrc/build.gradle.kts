@@ -19,4 +19,7 @@ dependencies {
     implementation("io.spring.gradle:dependency-management-plugin:1.1.7")
     // https://mvnrepository.com/artifact/com.github.davidmc24.gradle.plugin/gradle-avro-plugin
     implementation("com.github.davidmc24.gradle.plugin:gradle-avro-plugin:1.9.1")
+    // https://mvnrepository.com/artifact/com.github.node-gradle.node/com.github.node-gradle.node.gradle.plugin
+    implementation("com.github.node-gradle.node:com.github.node-gradle.node.gradle.plugin:7.1.0")
+
 }

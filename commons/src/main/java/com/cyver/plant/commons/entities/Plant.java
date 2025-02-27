@@ -4,6 +4,8 @@ import java.io.Serial;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.CascadeType;
@@ -32,6 +34,7 @@ public final class Plant extends Audit {
 
     private UUID owner;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plant", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EnvironmentalMeasurement> environmentalMeasurements;
 

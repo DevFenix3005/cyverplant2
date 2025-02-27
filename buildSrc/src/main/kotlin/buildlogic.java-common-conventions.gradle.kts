@@ -16,19 +16,15 @@ repositories {
 dependencies {
     constraints {
         // Define dependency versions as constraints
-        // https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
-        implementation("jakarta.persistence:jakarta.persistence-api:3.2.0")
-        implementation("io.hypersistence:hypersistence-utils-hibernate-63:3.9.2")
-        implementation("org.apache.commons:commons-text:1.12.0")
         implementation("org.apache.avro:avro:1.12.0")
         implementation("io.confluent:kafka-avro-serializer:7.8.0")
         implementation("com.google.guava:guava:33.4.0-jre")
         implementation("org.mapstruct:mapstruct:1.6.3")
+        implementation("com.konghq:unirest-java-core:4.4.5")
+        implementation("com.konghq:unirest-objectmapper-jackson:4.2.9")
         annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
         annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
     }
-
-
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

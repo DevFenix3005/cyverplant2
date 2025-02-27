@@ -3,6 +3,8 @@ package com.cyver.plant.commons.entities;
 import java.io.Serial;
 import java.time.LocalDateTime;
 
+import com.cyver.plant.commons.shared.TemperatureUnit;
+
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.AttributeOverrides;
 import jakarta.persistence.Column;

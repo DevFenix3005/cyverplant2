@@ -6,14 +6,29 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record NodeMeasurement(String temperatureUnit, float temperature, float humidity, float heatIndex, int light, int soilMoisture)
+import lombok.Data;
+
+@Data
+public final class NodeMeasurementResponse
         implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8975676324202141628L;
 
+    private final String temperatureUnit;
+
+    private final float temperature;
+
+    private final float humidity;
+
+    private final float heatIndex;
+
+    private final int light;
+
+    private final int soilMoisture;
+
     @JsonCreator
-    public NodeMeasurement(
+    public NodeMeasurementResponse(
             @JsonProperty("temperature_unit") final String temperatureUnit,
             @JsonProperty("temperature") final float temperature,
             @JsonProperty("humidity") final float humidity,
@@ -27,4 +42,5 @@ public record NodeMeasurement(String temperatureUnit, float temperature, float h
         this.light = light;
         this.soilMoisture = soilMoisture;
     }
+
 }

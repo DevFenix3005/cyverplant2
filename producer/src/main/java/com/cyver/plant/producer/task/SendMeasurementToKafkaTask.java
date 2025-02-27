@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.cyver.plant.commons.node.NodeMeasurementResponse;
 import com.cyver.plant.producer.configuration.PlantProperties;
 import com.cyver.plant.producer.service.NodeCommunicationService;
 import com.cyver.plant.producer.service.PlantMeasurementProducerService;
@@ -31,11 +32,13 @@ public class SendMeasurementToKafkaTask {
     }
 
     @Scheduled(cron = "${plant.cron}")
-    public void sendHobbitQuote() {
+    public void sendEnvironmentalMeasurementToTopic() {
         log.info("Sending plant measurement");
-        plantProperties.getNodes().stream()
-                .map(nodeCommunicationService::getMeasurement)
-                .forEach(plantMeasurementProducerService::sendMessage);
+        for (final PlantProperties.NodeConfiguration node : plantProperties.getNodes()) {
+            log.info("Sending plant measurement for node: {}", node);
+            NodeMeasurementResponse data = nodeCommunicationService.getMeasurement(node);
+            plantMeasurementProducerService.sendMessage(data);
+        }
     }
 
 }

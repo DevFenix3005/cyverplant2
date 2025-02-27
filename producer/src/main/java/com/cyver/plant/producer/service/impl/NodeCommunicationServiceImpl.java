@@ -1,37 +1,39 @@
 package com.cyver.plant.producer.service.impl;
 
-import java.net.URI;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import com.cyver.plant.commons.node.NodeMeasurement;
+import com.cyver.plant.commons.node.NodeMeasurementRequest;
+import com.cyver.plant.commons.node.NodeMeasurementResponse;
+import com.cyver.plant.commons.shared.TemperatureUnit;
 import com.cyver.plant.producer.configuration.PlantProperties;
 import com.cyver.plant.producer.service.NodeCommunicationService;
+
+import kong.unirest.core.HttpResponse;
+import kong.unirest.core.UnirestInstance;
 
 @Service
 public class NodeCommunicationServiceImpl implements NodeCommunicationService {
 
-    private final RestTemplate restTemplate;
+    private final UnirestInstance unirest;
 
-    public NodeCommunicationServiceImpl(final RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public NodeCommunicationServiceImpl(final UnirestInstance unirest) {
+        this.unirest = unirest;
     }
 
     @Override
-    public NodeMeasurement getMeasurement(PlantProperties.NodeConfiguration nodeConfiguration) {
-        URI uri = UriComponentsBuilder.fromUriString(nodeConfiguration.getUrl())
-                .path("/measurement")
-                .build()
-                .toUri();
+    public NodeMeasurementResponse getMeasurement(PlantProperties.NodeConfiguration nodeConfiguration) {
+        NodeMeasurementRequest request = new NodeMeasurementRequest(TemperatureUnit.CELSIUS);
 
-        ResponseEntity<NodeMeasurement> response = restTemplate.getForEntity(uri, NodeMeasurement.class);
-        if (response.getStatusCode().is2xxSuccessful()) {
+        HttpResponse<NodeMeasurementResponse> response = unirest.post(nodeConfiguration.getUrl())
+                .header("Content-Type", "application/json")
+                .header("Accept", "*/*")
+                .body(request)
+                .asObject(NodeMeasurementResponse.class);
+        if (response.isSuccess()) {
             return response.getBody();
         } else {
-            throw new RuntimeException("Error while getting measurement from node: " + nodeConfiguration.getName());
+            throw new RuntimeException("Failed to get measurement from node: " + nodeConfiguration);
         }
+
     }
 }

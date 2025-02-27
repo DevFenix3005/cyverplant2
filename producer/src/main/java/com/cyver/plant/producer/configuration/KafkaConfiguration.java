@@ -9,7 +9,7 @@ import org.springframework.kafka.config.TopicBuilder;
 public class KafkaConfiguration {
 
     @Bean
-    public NewTopic hobbitAvro(final PlantProperties plantProperties) {
+    public NewTopic cyverplantAvroTopic(final PlantProperties plantProperties) {
         return TopicBuilder.name(plantProperties.getTopic()).partitions(6).build();
     }
 

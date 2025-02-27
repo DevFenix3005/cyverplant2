@@ -11,9 +11,10 @@ plugins {
 }
 
 rootProject.name = "plant-ecosystem"
-include("app")
 include("commons")
 include("utilities")
+include("database")
 include("producer")
 include("consumer")
-include("database")
+include("data")
+include("frontend")

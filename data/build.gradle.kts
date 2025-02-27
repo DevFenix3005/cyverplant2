@@ -6,12 +6,6 @@ plugins {
     id("buildlogic.java-application-conventions")
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
 configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
@@ -20,9 +14,7 @@ configurations {
 
 
 dependencies {
-    implementation(project(":commons"))
     implementation(project(":database"))
-    implementation("org.springframework.boot:spring-boot-starter-data-rest")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
     runtimeOnly("org.postgresql:postgresql")

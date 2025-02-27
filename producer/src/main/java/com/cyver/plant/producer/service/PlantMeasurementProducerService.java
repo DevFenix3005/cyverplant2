@@ -1,8 +1,8 @@
 package com.cyver.plant.producer.service;
 
-import com.cyver.plant.commons.node.NodeMeasurement;
+import com.cyver.plant.commons.node.NodeMeasurementResponse;
 
 public interface PlantMeasurementProducerService {
 
-    void sendMessage( NodeMeasurement nodeMeasurement);
+    void sendMessage( NodeMeasurementResponse nodeMeasurementResponse);
 }
