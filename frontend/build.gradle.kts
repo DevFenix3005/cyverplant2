@@ -16,15 +16,13 @@ node {
 
 tasks.create("helloWorld", NodeTask::class) {
     dependsOn("npmInstall")
-    script = file("src/main/node/index.js")
+    script = file("src/index.js")
 }
 
 tasks.create("init", NpmTask::class) {
     args.set(arrayListOf("init", "-y"))
-    workingDir = file("src/main/node")
 }
 
 tasks.create("installFiglet", NpmTask::class) {
     args.set(arrayListOf("install", "-y", "figlet"))
-    workingDir = file("src/main/node")
 }
