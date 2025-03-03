@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cyver.plant.data.services.EnvironmentalMeasurementService;
 import com.cyver.plant.commons.entities.EnvironmentalMeasurement;
 
-@RestController("environmental-measurement")
+@RestController("environmentalMeasurement")
 @RequestMapping("/api/v0/environmental-measurement")
 public class EnvironmentalMeasurementResource {
 

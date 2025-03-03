@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "PlantAvro",
+  "namespace": "com.cyver.plant.commons.avro",
+  "fields": [
+    {
+      "name": "ownerId",
+      "type": "string"
+    },
+    {
+      "name": "plantName",
+      "type": "string"
+    },
+    {
+      "name": "plantType",
+      "type": "string"
+    },
+    {
+      "name": "plantLocation",
+      "type": "com.cyver.plant.commons.avro.LocationAvro"
+    }
+  ]
+}

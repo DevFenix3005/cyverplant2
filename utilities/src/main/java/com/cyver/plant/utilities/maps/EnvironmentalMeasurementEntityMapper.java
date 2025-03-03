@@ -5,10 +5,9 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 
 import com.cyver.plant.commons.avro.EnvironmentalMeasurementAvro;
-import com.cyver.plant.commons.avro.InnerTemperatureUnit;
 import com.cyver.plant.commons.entities.EnvironmentalMeasurement;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, imports = { InnerTemperatureUnit.class })
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface EnvironmentalMeasurementEntityMapper {
 
     @Mapping(target = "uuid", ignore = true)

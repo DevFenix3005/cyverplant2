@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "LocationAvro",
+  "namespace": "com.cyver.plant.commons.avro",
+  "fields": [
+    {
+      "name": "latitude",
+      "type": "float"
+    },
+    {
+      "name": "longitude",
+      "type": "float"
+    }
+  ]
+}
