@@ -22,6 +22,8 @@ public class PlantProperties {
     public static class NodeConfiguration {
         private String name;
 
+        private String type;
+
         private String url;
 
         private float minSoilMoisture;

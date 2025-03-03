@@ -38,12 +38,12 @@ public class PlantMeasurementProducerServiceImpl implements PlantMeasurementProd
     }
 
     @Override
-    public void sendMessage(final NodeMeasurementResponse nodeMeasurementResponse) {
+    public void sendMessage(final NodeMeasurementResponse nodeMeasurementResponse, String ownerId, String plantName, String plantType) {
 
         final String topic = plantProperties.getTopic();
         final String key = UUID.randomUUID().toString();
         final EnvironmentalMeasurementAvro environmentalMeasurementAvro =
-                environmentalMeasurementAvroMapper.toAvroMessage(nodeMeasurementResponse);
+                environmentalMeasurementAvroMapper.toAvroMessage(nodeMeasurementResponse, ownerId, plantName, plantType);
 
         CompletableFuture<SendResult<String, EnvironmentalMeasurementAvro>> future =
                 kafkaTemplate.send(topic, key, environmentalMeasurementAvro);

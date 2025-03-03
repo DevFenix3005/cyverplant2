@@ -37,7 +37,7 @@ public class SendMeasurementToKafkaTask {
         for (final PlantProperties.NodeConfiguration node : plantProperties.getNodes()) {
             log.info("Sending plant measurement for node: {}", node);
             NodeMeasurementResponse data = nodeCommunicationService.getMeasurement(node);
-            plantMeasurementProducerService.sendMessage(data);
+            plantMeasurementProducerService.sendMessage(data, plantProperties.getUser(), node.getName(), node.getType());
         }
     }
 

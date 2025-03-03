@@ -4,15 +4,12 @@
   "namespace": "com.cyver.plant.commons.avro",
   "fields": [
     {
+      "name": "plantInfo",
+      "type": "com.cyver.plant.commons.avro.PlantAvro"
+    },
+    {
       "name": "temperatureUnit",
-      "type": {
-        "type": "enum",
-        "name": "InnerTemperatureUnit",
-        "symbols": [
-          "CELSIUS",
-          "FAHRENHEIT"
-        ]
-      }
+      "type": "com.cyver.plant.commons.avro.TemperatureUnit"
     },
     {
       "name": "temperature",

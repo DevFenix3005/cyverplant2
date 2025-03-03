@@ -1,0 +1,9 @@
+{
+  "type": "enum",
+  "name": "TemperatureUnit",
+  "namespace": "com.cyver.plant.commons.avro",
+  "symbols": [
+    "CELSIUS",
+    "FAHRENHEIT"
+  ]
+}
