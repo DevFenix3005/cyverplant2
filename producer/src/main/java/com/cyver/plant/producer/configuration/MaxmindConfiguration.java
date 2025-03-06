@@ -14,7 +14,7 @@ public class MaxmindConfiguration {
 
     @Bean
     public DatabaseReader maxmindDatabase() throws IOException {
-        InputStream is = new ClassPathResource("datos/GeoLite2-City.mmdb").getInputStream();
+        InputStream is = new ClassPathResource("datos/FO.mmdb").getInputStream();
         return new DatabaseReader.Builder(is).build();
     }
 
