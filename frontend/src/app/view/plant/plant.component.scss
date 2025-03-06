@@ -1,0 +1,23 @@
+$matCardMarginSeparation: 10px;
+
+div.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 20px 0 20px;
+
+  mat-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    max-width: 300px;
+    max-height: 400px;
+    margin: $matCardMarginSeparation;
+    padding: 5px;
+
+    mat-card-header {
+      flex-shrink: 0;
+    }
+  }
+}

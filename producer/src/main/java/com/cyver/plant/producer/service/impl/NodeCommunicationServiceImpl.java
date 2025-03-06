@@ -2,6 +2,7 @@ package com.cyver.plant.producer.service.impl;
 
 import org.springframework.stereotype.Service;
 
+import com.cyver.plant.commons.exceptions.NodeResponseFailedException;
 import com.cyver.plant.commons.node.NodeMeasurementRequest;
 import com.cyver.plant.commons.node.NodeMeasurementResponse;
 import com.cyver.plant.commons.shared.TemperatureUnit;
@@ -32,7 +33,7 @@ public class NodeCommunicationServiceImpl implements NodeCommunicationService {
         if (response.isSuccess()) {
             return response.getBody();
         } else {
-            throw new RuntimeException("Failed to get measurement from node: " + nodeConfiguration);
+            throw new NodeResponseFailedException(String.format("Failed to get measurement from node: %s", nodeConfiguration));
         }
 
     }

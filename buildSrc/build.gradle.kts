@@ -12,14 +12,19 @@ repositories {
     gradlePluginPortal()
 }
 
+val springbootPlugin = "3.4.2"
+val springbootManagementVersions = "1.1.7"
+val avroPluginVersion = "1.9.1"
+val nodePluginVersion = "7.1.0"
+
 dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.4.2")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:${springbootPlugin}")
     // https://mvnrepository.com/artifact/io.spring.gradle/dependency-management-plugin
-    implementation("io.spring.gradle:dependency-management-plugin:1.1.7")
+    implementation("io.spring.gradle:dependency-management-plugin:${springbootManagementVersions}")
     // https://mvnrepository.com/artifact/com.github.davidmc24.gradle.plugin/gradle-avro-plugin
-    implementation("com.github.davidmc24.gradle.plugin:gradle-avro-plugin:1.9.1")
+    implementation("com.github.davidmc24.gradle.plugin:gradle-avro-plugin:${avroPluginVersion}")
     // https://mvnrepository.com/artifact/com.github.node-gradle.node/com.github.node-gradle.node.gradle.plugin
-    implementation("com.github.node-gradle.node:com.github.node-gradle.node.gradle.plugin:7.1.0")
+    implementation("com.github.node-gradle.node:com.github.node-gradle.node.gradle.plugin:${nodePluginVersion}")
 
 }

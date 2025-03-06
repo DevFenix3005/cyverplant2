@@ -4,6 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/commons/plant-ecosystem.commons.iml" filepath="$PROJECT_DIR$/.idea/modules/commons/plant-ecosystem.commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/commons/plant-ecosystem.commons.main.iml" filepath="$PROJECT_DIR$/.idea/modules/commons/plant-ecosystem.commons.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumer/plant-ecosystem.consumer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/consumer/plant-ecosystem.consumer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/plant-ecosystem.data.main.iml" filepath="$PROJECT_DIR$/.idea/modules/data/plant-ecosystem.data.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/producer/plant-ecosystem.producer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/producer/plant-ecosystem.producer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/utilities/plant-ecosystem.utilities.main.iml" filepath="$PROJECT_DIR$/.idea/modules/utilities/plant-ecosystem.utilities.main.iml" />
     </modules>
   </component>
 </project>

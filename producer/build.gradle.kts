@@ -23,6 +23,7 @@ dependencies {
     implementation("org.springframework.kafka:spring-kafka")
     implementation("org.apache.avro:avro")
     implementation("io.confluent:kafka-avro-serializer")
+    implementation("com.maxmind.geoip2:geoip2:2.15.0")
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

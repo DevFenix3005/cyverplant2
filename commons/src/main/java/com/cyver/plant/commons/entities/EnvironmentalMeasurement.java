@@ -11,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@Table(name = "environmentals_measurements")
 @AttributeOverride(name = "uuid", column = @Column(name = "environmental_measurement_uuid"))
 public final class EnvironmentalMeasurement extends Audit {
 

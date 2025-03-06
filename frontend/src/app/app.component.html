@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item routerLink="/dashboard">Dashboard</a>
+    <a mat-menu-item routerLink="/plant">Plants</a>
+  </mat-menu>
+  <div>
+    <span>{{ title }}</span><span class="material-symbols-outlined">psychiatry</span>
+  </div>
+</mat-toolbar>
+
+<router-outlet/>
