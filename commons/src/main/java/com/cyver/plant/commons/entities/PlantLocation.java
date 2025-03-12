@@ -27,9 +27,9 @@ public class PlantLocation implements Serializable {
     private static final long serialVersionUID = 7278727371813097545L;
 
     @NonNull
-    private double latitude;
+    private Double latitude;
 
     @NonNull
-    private double longitude;
+    private Double longitude;
 
 }

@@ -9,6 +9,7 @@ plugins {
 
 dependencies {
     api("org.springframework.boot:spring-boot-starter")
+    api("org.springframework.boot:spring-boot-starter-validation")
     api("org.hibernate.orm:hibernate-core")
     api("org.apache.avro:avro")
     compileOnly("org.projectlombok:lombok")

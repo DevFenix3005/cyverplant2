@@ -11,13 +11,21 @@ div.container {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
-    max-width: 300px;
+    max-width: 400px;
     max-height: 400px;
     margin: $matCardMarginSeparation;
     padding: 5px;
 
     mat-card-header {
       flex-shrink: 0;
+
+      mat-card-subtitle{
+        font-size: 12px;
+      }
+    }
+
+    mat-divider{
+      margin: 10px 0 5px 0;
     }
   }
 }

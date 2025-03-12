@@ -33,15 +33,15 @@ public final class EnvironmentalMeasurement extends Audit {
 
     private TemperatureUnit temperatureUnit;
 
-    private float temperature;
+    private Float temperature;
 
-    private float humidity;
+    private Float humidity;
 
-    private float heatIndex;
+    private Float heatIndex;
 
-    private float light;
+    private Float light;
 
-    private float soilMoisture;
+    private Float soilMoisture;
 
     private LocalDateTime measuredAt;
 

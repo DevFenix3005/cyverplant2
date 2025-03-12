@@ -1,0 +1,34 @@
+.app-splash-screen {
+  background: var(--mat-sys-secondary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  transition: left 0.5s;
+}
+
+.app-label {
+  color: var(--mat-sys-on-secondary);
+  margin-top: 18px;
+  font-size: 2.5em;
+}
+
+.app-splash-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-logo-2 {
+  color: var(--mat-sys-on-secondary);
+  width: 100px;
+  height: 100px;
+}

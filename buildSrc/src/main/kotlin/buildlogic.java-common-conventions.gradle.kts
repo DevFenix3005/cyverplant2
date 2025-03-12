@@ -22,6 +22,8 @@ dependencies {
         implementation("org.mapstruct:mapstruct:1.6.3")
         implementation("com.konghq:unirest-java-core:4.4.5")
         implementation("com.konghq:unirest-objectmapper-jackson:4.2.9")
+        implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5")
+        implementation("com.okta.spring:okta-spring-boot-starter:3.0.7")
         annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
         annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
     }

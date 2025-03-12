@@ -3,6 +3,7 @@ package com.cyver.plant.commons.node;
 import java.io.Serial;
 import java.io.Serializable;
 
+import com.cyver.plant.commons.shared.TemperatureUnit;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,7 +16,7 @@ public final class NodeMeasurementResponse
     @Serial
     private static final long serialVersionUID = 8975676324202141628L;
 
-    private final String temperatureUnit;
+    private final TemperatureUnit temperatureUnit;
 
     private final float temperature;
 
@@ -29,7 +30,7 @@ public final class NodeMeasurementResponse
 
     @JsonCreator
     public NodeMeasurementResponse(
-            @JsonProperty("temperature_unit") final String temperatureUnit,
+            @JsonProperty("temperature_unit") final TemperatureUnit temperatureUnit,
             @JsonProperty("temperature") final float temperature,
             @JsonProperty("humidity") final float humidity,
             @JsonProperty("heat_index") final float heatIndex,
