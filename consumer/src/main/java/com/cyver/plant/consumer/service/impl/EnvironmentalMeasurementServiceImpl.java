@@ -7,7 +7,7 @@ import com.cyver.plant.commons.entities.EnvironmentalMeasurement;
 import com.cyver.plant.commons.entities.Plant;
 import com.cyver.plant.consumer.service.EnvironmentalMeasurementService;
 import com.cyver.plant.database.EnvironmentalMeasurementRepository;
-import com.cyver.plant.utilities.maps.EnvironmentalMeasurementEntityMapper;
+import com.cyver.plant.utilities.map.MapUtilComponent;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,13 +15,13 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class EnvironmentalMeasurementServiceImpl implements EnvironmentalMeasurementService {
 
-    private final EnvironmentalMeasurementEntityMapper environmentalMeasurementEntityMapper;
+    private final MapUtilComponent mapUtilComponent;
 
     private final EnvironmentalMeasurementRepository environmentalMeasurementRepository;
 
-    public EnvironmentalMeasurementServiceImpl(final EnvironmentalMeasurementEntityMapper environmentalMeasurementEntityMapper,
+    public EnvironmentalMeasurementServiceImpl(final MapUtilComponent mapUtilComponent,
             final EnvironmentalMeasurementRepository environmentalMeasurementRepository) {
-        this.environmentalMeasurementEntityMapper = environmentalMeasurementEntityMapper;
+        this.mapUtilComponent = mapUtilComponent;
         this.environmentalMeasurementRepository = environmentalMeasurementRepository;
     }
 
@@ -29,8 +29,6 @@ public class EnvironmentalMeasurementServiceImpl implements EnvironmentalMeasure
     public EnvironmentalMeasurement convertAndSaveEnvironmentalMeasurement(
             final Plant plant,
             final EnvironmentalMeasurementAvro environmentalMeasurementAvro) {
-        EnvironmentalMeasurement environmentalMeasurement = environmentalMeasurementEntityMapper.toEntity(environmentalMeasurementAvro);
-        environmentalMeasurement.setPlant(plant);
-        return environmentalMeasurementRepository.save(environmentalMeasurement);
+        return environmentalMeasurementRepository.save(mapUtilComponent.toEntity(environmentalMeasurementAvro, plant));
     }
 }

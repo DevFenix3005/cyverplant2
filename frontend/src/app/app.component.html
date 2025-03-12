@@ -1,14 +1,26 @@
-<mat-toolbar>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <a mat-menu-item routerLink="/dashboard">Dashboard</a>
-    <a mat-menu-item routerLink="/plant">Plants</a>
-  </mat-menu>
-  <div>
-    <span>{{ title }}</span><span class="material-symbols-outlined">psychiatry</span>
-  </div>
-</mat-toolbar>
-
-<router-outlet/>
+<app-splash/>
+@if (auth.isAuthenticated()) {
+  <mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/dashboard">Dashboard</a>
+      <a mat-menu-item routerLink="/plant">Plants</a>
+      <mat-divider></mat-divider>
+      <a mat-button (click)="auth.logout()">Logout</a>
+    </mat-menu>
+    <div>
+      <span>{{ title }}
+        <mat-icon svgIcon="sprout"></mat-icon></span>
+    </div>
+    <span class="example-spacer"></span>
+    <div class="user-info">
+      <span>{{ nickname() }}</span>
+      <img [ngSrc]="picture()!" alt="Shiba Inu" width="30" height="30">
+    </div>
+  </mat-toolbar>
+  <main>
+    <router-outlet/>
+  </main>
+}

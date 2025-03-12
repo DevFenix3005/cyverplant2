@@ -1,0 +1,17 @@
+$margin-sides: 125px;
+
+main {
+  margin-top: 15px;
+  margin-right: $margin-sides;
+  margin-left: $margin-sides;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.user-info {
+  span {
+    margin-right: 10px;
+  }
+}
