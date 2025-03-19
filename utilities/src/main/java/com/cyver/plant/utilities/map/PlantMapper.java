@@ -6,6 +6,7 @@ import org.mapstruct.factory.Mappers;
 
 import com.cyver.plant.commons.avro.PlantAvro;
 import com.cyver.plant.commons.dto.PlantDto;
+import com.cyver.plant.commons.entities.Owner;
 import com.cyver.plant.commons.entities.Plant;
 import com.cyver.plant.commons.entities.PlantType;
 
@@ -20,12 +21,12 @@ interface PlantMapper {
     @Mapping(target = "type", source = "type.name")
     PlantDto toDto(Plant plant);
 
-    @Mapping(target = "owner", expression = "java(java.util.UUID.fromString(plantAvro.getOwnerId()))")
+    @Mapping(target = "owner", source = "owner")
     @Mapping(target = "environmentalMeasurements", expression = "java(java.util.Collections.emptyList())")
     @Mapping(target = "name", source = "plantAvro.plantName")
     @Mapping(target = "plantLocation", source = "plantAvro.plantLocation")
     @Mapping(target = "type", source = "plantType")
     @Mapping(target = "uuid", ignore = true)
-    Plant toEntity(PlantAvro plantAvro, PlantType plantType);
+    Plant toEntity(PlantAvro plantAvro, PlantType plantType, Owner owner);
 
 }

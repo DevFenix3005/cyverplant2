@@ -48,8 +48,9 @@ public final class Plant extends Audit {
     private PlantLocation plantLocation;
 
     @NonNull
-    @Column(nullable = false, updatable = false)
-    private UUID owner;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "owner", nullable = false, updatable = false)
+    private Owner owner;
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

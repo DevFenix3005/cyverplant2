@@ -1,11 +1,14 @@
 package com.cyver.plant.producer.task;
 
+import java.util.concurrent.TimeUnit;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import com.cyver.plant.commons.exceptions.NodeResponseFailedException;
 import com.cyver.plant.commons.node.NodeMeasurementResponse;
 import com.cyver.plant.producer.configuration.PlantProperties;
 import com.cyver.plant.producer.service.NodeCommunicationService;
@@ -31,13 +34,18 @@ public class SendMeasurementToKafkaTask {
         this.nodeCommunicationService = nodeCommunicationService;
     }
 
-    @Scheduled(cron = "${plant.cron}")
+    @Scheduled(timeUnit = TimeUnit.MINUTES, fixedRateString="${plant.interval}")
     public void sendEnvironmentalMeasurementToTopic() {
         log.info("Sending plant measurement");
         for (final PlantProperties.NodeConfiguration node : plantProperties.getNodes()) {
             log.info("Sending plant measurement for node: {}", node);
-            NodeMeasurementResponse data = nodeCommunicationService.getMeasurement(node);
-            plantMeasurementProducerService.sendMessage(data, plantProperties.getUser(), node.getName(), node.getType());
+            try {
+                plantMeasurementProducerService.sendMessage(nodeCommunicationService.getMeasurement(node), plantProperties.getUser(),
+                        node.getName(), node.getType());
+            } catch (NodeResponseFailedException nodeResponseFailedException) {
+                log.error("Failed to get measurement from node: {}", node);
+                log.error("Trace", nodeResponseFailedException);
+            }
         }
     }
 

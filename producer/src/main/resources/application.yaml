@@ -18,7 +18,7 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
 
 plant:
-  cron: ${PLANT_CRON}
+  interval: ${PLANT_INTERVAL}
   user: ${PLANT_USER}
   topic: ${KAFKA_TOPIC}
   nodes:

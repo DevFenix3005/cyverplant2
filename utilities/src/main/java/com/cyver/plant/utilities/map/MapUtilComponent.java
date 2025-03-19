@@ -7,6 +7,7 @@ import com.cyver.plant.commons.avro.PlantAvro;
 import com.cyver.plant.commons.dto.EnvironmentalMeasurementDto;
 import com.cyver.plant.commons.dto.PlantDto;
 import com.cyver.plant.commons.entities.EnvironmentalMeasurement;
+import com.cyver.plant.commons.entities.Owner;
 import com.cyver.plant.commons.entities.Plant;
 import com.cyver.plant.commons.entities.PlantType;
 import com.cyver.plant.commons.node.NodeMeasurementResponse;
@@ -32,8 +33,8 @@ public class MapUtilComponent {
         return PlantMapper.INSTANCE.toDto(plant);
     }
 
-    public Plant toEntity(PlantAvro plantAvro, PlantType plantType) {
-        return PlantMapper.INSTANCE.toEntity(plantAvro, plantType);
+    public Plant toEntity(PlantAvro plantAvro, PlantType plantType, Owner owner) {
+        return PlantMapper.INSTANCE.toEntity(plantAvro, plantType, owner);
     }
 
 }

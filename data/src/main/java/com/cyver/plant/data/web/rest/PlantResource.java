@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,9 +34,9 @@ public class PlantResource {
     private final EnvironmentalMeasurementService environmentalMeasurementService;
 
     @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity<List<PlantDto>> getPlantsByOwner(Principal principal) {
+    public ResponseEntity<List<PlantDto>> getPlantsByOwner(@AuthenticationPrincipal OAuth2User principal) {
         log.info("REST request to get plants by owner : {}", principal.getName());
-        return new ResponseEntity<>(plantService.getPlantsByOwner(UUID.fromString("f9312fe2-6d9f-45a7-a2d9-c9dbe34941bc")), HttpStatus.OK);
+        return new ResponseEntity<>(plantService.getPlantsByOwner(principal.getAttribute("sid")), HttpStatus.OK);
     }
 
     @GetMapping(path = "/{plantUuid}/environmental-measurement", produces = { MediaType.APPLICATION_JSON_VALUE })
