@@ -3,7 +3,6 @@ package com.cyver.plant.commons.dto;
 import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.cyver.plant.commons.annotations.Default;

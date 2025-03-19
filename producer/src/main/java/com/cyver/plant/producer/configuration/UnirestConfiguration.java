@@ -1,5 +1,7 @@
 package com.cyver.plant.producer.configuration;
 
+import java.util.Objects;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,7 +30,7 @@ public class UnirestConfiguration {
             long startNanos = System.nanoTime();
             return (responseSummary, exception) -> log.info("path: {} status: {} time: {}",
                     requestSummary.getRawPath(),
-                    responseSummary.getStatus(),
+                    Objects.isNull(responseSummary) ? "N/A" : responseSummary.getStatus(),
                     System.nanoTime() - startNanos);
         });
         return unirest;

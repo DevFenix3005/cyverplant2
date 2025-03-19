@@ -10,6 +10,7 @@ import com.cyver.plant.producer.configuration.PlantProperties;
 import com.cyver.plant.producer.service.NodeCommunicationService;
 
 import kong.unirest.core.HttpResponse;
+import kong.unirest.core.UnirestException;
 import kong.unirest.core.UnirestInstance;
 
 @Service
@@ -22,17 +23,20 @@ public class NodeCommunicationServiceImpl implements NodeCommunicationService {
     }
 
     @Override
-    public NodeMeasurementResponse getMeasurement(PlantProperties.NodeConfiguration nodeConfiguration) {
-        NodeMeasurementRequest request = new NodeMeasurementRequest(TemperatureUnit.CELSIUS);
-
-        HttpResponse<NodeMeasurementResponse> response = unirest.post(nodeConfiguration.getUrl())
-                .header("Content-Type", "application/json")
-                .header("Accept", "*/*")
-                .body(request)
-                .asObject(NodeMeasurementResponse.class);
-        if (response.isSuccess()) {
-            return response.getBody();
-        } else {
+    public NodeMeasurementResponse getMeasurement(PlantProperties.NodeConfiguration nodeConfiguration) throws NodeResponseFailedException {
+        try {
+            final NodeMeasurementRequest request = new NodeMeasurementRequest(TemperatureUnit.CELSIUS);
+            final HttpResponse<NodeMeasurementResponse> response = unirest.post(nodeConfiguration.getUrl())
+                    .header("Content-Type", "application/json")
+                    .header("Accept", "*/*")
+                    .body(request)
+                    .asObject(NodeMeasurementResponse.class);
+            if (response.isSuccess()) {
+                return response.getBody();
+            } else {
+                throw new UnirestException(String.format("Failed to get measurement from node: %s", nodeConfiguration));
+            }
+        } catch (UnirestException unirestException) {
             throw new NodeResponseFailedException(String.format("Failed to get measurement from node: %s", nodeConfiguration));
         }
 

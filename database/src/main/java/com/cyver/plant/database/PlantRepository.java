@@ -9,11 +9,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.cyver.plant.commons.dto.PlantDto;
+import com.cyver.plant.commons.entities.Owner;
 import com.cyver.plant.commons.entities.Plant;
 
 public interface PlantRepository extends JpaRepository<Plant, UUID> {
 
-    Optional<Plant> findPlantByNameAndOwner(String name, UUID owner);
+    Optional<Plant> findPlantByNameAndOwner(String name, Owner owner);
 
     @Query(value = """
             SELECT \
