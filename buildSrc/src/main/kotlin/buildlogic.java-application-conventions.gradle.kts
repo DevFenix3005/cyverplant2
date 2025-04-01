@@ -6,7 +6,6 @@ plugins {
     // Apply the common convention plugin for shared build configuration between library and application projects.
     id("buildlogic.java-common-conventions")
     id("org.springframework.boot")
-    id ("io.spring.dependency-management")
     // Apply the application plugin to add support for building a CLI application in Java.
     java
 }

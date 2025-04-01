@@ -5,6 +5,7 @@
 plugins {
     // Apply the java Plugin to add support for Java.
     java
+    id("io.spring.dependency-management")
 }
 
 repositories {
@@ -14,19 +15,8 @@ repositories {
 }
 
 dependencies {
-    constraints {
-        // Define dependency versions as constraints
-        implementation("org.apache.avro:avro:1.12.0")
-        implementation("io.confluent:kafka-avro-serializer:7.8.0")
-        implementation("com.google.guava:guava:33.4.0-jre")
-        implementation("org.mapstruct:mapstruct:1.6.3")
-        implementation("com.konghq:unirest-java-core:4.4.5")
-        implementation("com.konghq:unirest-objectmapper-jackson:4.2.9")
-        implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.5")
-        implementation("com.okta.spring:okta-spring-boot-starter:3.0.7")
-        annotationProcessor("org.mapstruct:mapstruct-processor:1.6.3")
-        annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
-    }
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -39,4 +29,10 @@ java {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+    }
 }
