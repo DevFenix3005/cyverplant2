@@ -3,17 +3,12 @@
                    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-  <changeSet id="20250324-13" author="Roberto D. Cazarin">
-    <createProcedure dbms="postgresql" path="../files/get_plant_with_last_environmental_measurement.sql"
-                     relativeToChangelogFile="true"/>
-  </changeSet>
-  <changeSet id="20250326-1" author="Roberto D. Cazarin">
-    <sql>
-      DROP FUNCTION public.get_plant_with_last_environmental_measurement(uuid);
-    </sql>
-  </changeSet>
-  <changeSet id="20250326-2" author="Roberto D. Cazarin">
-    <createProcedure dbms="postgresql" path="../files/get_plant_with_last_environmental_measurement.sql"
-                     relativeToChangelogFile="true"/>
-  </changeSet>
+
+  <include file="./datatype/temperature_unit.xml" relativeToChangelogFile="true"/>
+  <include file="./datatype/plant_with_last_environmental_measurement.xml" relativeToChangelogFile="true"/>
+  <include file="./table/owners.xml" relativeToChangelogFile="true"/>
+  <include file="./table/types.xml" relativeToChangelogFile="true"/>
+  <include file="./table/plants.xml" relativeToChangelogFile="true"/>
+  <include file="./table/environmental_measurements.xml" relativeToChangelogFile="true"/>
+  <include file="./function/get_plant_with_last_environmental_measurement.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

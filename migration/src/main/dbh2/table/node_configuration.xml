@@ -25,4 +25,11 @@
       <column name="node_type"/>
     </createIndex>
   </changeSet>
+  <changeSet id="1743200040476-1" author="Roberto D. Cazarin">
+    <addColumn tableName="configuration_of_nodes">
+      <column name="node_able" type="boolean" defaultValue="true">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
 </databaseChangeLog>

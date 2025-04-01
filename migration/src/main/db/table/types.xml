@@ -1,6 +1,9 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-  <changeSet author="fenix (generated)" id="1742852539868-5">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <changeSet author="Roberto D. Cazarin" id="20250324-5">
     <createTable tableName="types">
       <column name="type_uuid" type="UUID">
         <constraints nullable="false" primaryKey="true" primaryKeyName="types_pkey"/>
@@ -9,5 +12,14 @@
         <constraints nullable="false"/>
       </column>
     </createTable>
+  </changeSet>
+  <changeSet author="Roberto D. Cazarin" id="20250324-6">
+    <createIndex indexName="types_name_idx" tableName="types" unique="true">
+      <column name="type_name"/>
+    </createIndex>
+  </changeSet>
+  <changeSet id="202250325-3" author="Roberto D. Cazarin">
+    <addDefaultValue tableName="types" columnName="type_uuid"
+                     defaultValueComputed="gen_random_uuid()"/>
   </changeSet>
 </databaseChangeLog>
