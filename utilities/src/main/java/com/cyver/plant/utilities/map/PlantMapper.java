@@ -4,29 +4,26 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import com.cyver.plant.database.tables.dtos.Owner;
+import com.cyver.plant.database.tables.dtos.Plant;
+import com.cyver.plant.database.tables.dtos.Type;
 import com.cyver.plant.commons.avro.PlantAvro;
-import com.cyver.plant.commons.dto.PlantDto;
-import com.cyver.plant.commons.entities.Owner;
-import com.cyver.plant.commons.entities.Plant;
-import com.cyver.plant.commons.entities.PlantType;
+import com.cyver.plant.database.tables.records.PlantsRecord;
+import com.cyver.plant.database.udt.dtos.PlantWithLastEnvironmentalMeasurement;
+import com.cyver.plant.database.udt.records.PlantWithLastEnvironmentalMeasurementRecord;
 
 @Mapper(uses = { EnvironmentalMeasurementMapper.class })
 interface PlantMapper {
 
     PlantMapper INSTANCE = Mappers.getMapper(PlantMapper.class);
 
-    @Mapping(target = "environmentalMeasurement", ignore = true)
-    @Mapping(target = "latitude", source = "plantLocation.latitude")
-    @Mapping(target = "longitude", source = "plantLocation.longitude")
-    @Mapping(target = "type", source = "type.name")
-    PlantDto toDto(Plant plant);
+    @Mapping(target = "longitude", source = "plantAvro.plantLocation.longitude")
+    @Mapping(target = "latitude", source = "plantAvro.plantLocation.latitude")
+    @Mapping(target = "plantUuid", expression = "java(java.util.UUID.randomUUID())")
+    Plant toEntity(PlantAvro plantAvro, Type plantType, Owner owner);
 
-    @Mapping(target = "owner", source = "owner")
-    @Mapping(target = "environmentalMeasurements", expression = "java(java.util.Collections.emptyList())")
-    @Mapping(target = "name", source = "plantAvro.plantName")
-    @Mapping(target = "plantLocation", source = "plantAvro.plantLocation")
-    @Mapping(target = "type", source = "plantType")
-    @Mapping(target = "uuid", ignore = true)
-    Plant toEntity(PlantAvro plantAvro, PlantType plantType, Owner owner);
+    PlantWithLastEnvironmentalMeasurement toPojo(PlantWithLastEnvironmentalMeasurementRecord plantWithLastEnvironmentalMeasurementRecord);
+
+    Plant mapPlantRecordToPlant(final PlantsRecord plantsRecord);
 
 }

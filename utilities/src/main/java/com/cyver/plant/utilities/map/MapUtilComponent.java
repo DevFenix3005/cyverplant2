@@ -4,37 +4,38 @@ import org.springframework.stereotype.Component;
 
 import com.cyver.plant.commons.avro.EnvironmentalMeasurementAvro;
 import com.cyver.plant.commons.avro.PlantAvro;
-import com.cyver.plant.commons.dto.EnvironmentalMeasurementDto;
-import com.cyver.plant.commons.dto.PlantDto;
-import com.cyver.plant.commons.entities.EnvironmentalMeasurement;
-import com.cyver.plant.commons.entities.Owner;
-import com.cyver.plant.commons.entities.Plant;
-import com.cyver.plant.commons.entities.PlantType;
 import com.cyver.plant.commons.node.NodeMeasurementResponse;
+import com.cyver.plant.database.tables.dtos.EnvironmentalMeasurement;
+import com.cyver.plant.database.tables.dtos.Owner;
+import com.cyver.plant.database.tables.dtos.Plant;
+import com.cyver.plant.database.tables.dtos.Type;
+import com.cyver.plant.database.tables.records.PlantsRecord;
+import com.cyver.plant.database.udt.dtos.PlantWithLastEnvironmentalMeasurement;
+import com.cyver.plant.database.udt.records.PlantWithLastEnvironmentalMeasurementRecord;
 
 @Component
 public class MapUtilComponent {
-
-    public EnvironmentalMeasurementDto toDto(EnvironmentalMeasurement environmentalMeasurement) {
-        return EnvironmentalMeasurementMapper.INSTANCE.toDto(environmentalMeasurement);
-    }
 
     public EnvironmentalMeasurement toEntity(EnvironmentalMeasurementAvro measurementAvro, Plant plant) {
         return EnvironmentalMeasurementMapper.INSTANCE.toEntity(measurementAvro, plant);
     }
 
     public EnvironmentalMeasurementAvro toAvroMessage(NodeMeasurementResponse nodeMeasurementResponse, String ownerId, String plantName,
-            String plantType, float longitude, float latitude) {
+            String plantType, double longitude, double latitude) {
         return EnvironmentalMeasurementMapper.INSTANCE.toAvroMessage(nodeMeasurementResponse, ownerId, plantName, plantType, longitude,
                 latitude);
     }
 
-    public PlantDto toDto(Plant plant) {
-        return PlantMapper.INSTANCE.toDto(plant);
-    }
-
-    public Plant toEntity(PlantAvro plantAvro, PlantType plantType, Owner owner) {
+    public Plant toEntity(PlantAvro plantAvro, Type plantType, Owner owner) {
         return PlantMapper.INSTANCE.toEntity(plantAvro, plantType, owner);
     }
 
+    public PlantWithLastEnvironmentalMeasurement toPojo(
+            PlantWithLastEnvironmentalMeasurementRecord plantWithLastEnvironmentalMeasurementRecord) {
+        return PlantMapper.INSTANCE.toPojo(plantWithLastEnvironmentalMeasurementRecord);
+    }
+
+    public Plant mapPlantRecordToPlant(final PlantsRecord plantsRecord) {
+        return PlantMapper.INSTANCE.mapPlantRecordToPlant(plantsRecord);
+    }
 }

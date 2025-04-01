@@ -1,4 +1,20 @@
 package com.cyver.plant.utilities.owner;
 
-public class OwnerUtils {
+import java.util.UUID;
+
+import org.springframework.stereotype.Component;
+
+import com.cyver.plant.database.tables.dtos.Owner;
+import com.cyver.plant.database.tables.repositories.OwnerRepository;
+
+@Component
+public class OwnerUtilComponent {
+
+    public Owner getOwnerByUUIDIfExists(final OwnerRepository ownerRepository, final UUID ownerId) {
+        return GetOwnerIfExistsOrThrowError.getOwnerByUUIDIfExists(ownerRepository, ownerId);
+    }
+
+    public Owner getOwnerByEmailIfExists(final OwnerRepository ownerRepository, final String email) {
+        return GetOwnerByEmailIfExistsOrThrowError.getOwnerIfExists(ownerRepository, email);
+    }
 }
