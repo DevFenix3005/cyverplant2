@@ -1,0 +1,31 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <changeSet author="fenix (generated)" id="1742852539868-1">
+    <createTable tableName="environmental_measurements">
+      <column name="environmental_measurement_uuid" type="UUID">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="environmental_measurements_pkey"/>
+      </column>
+      <column name="heat_index" type="FLOAT4">
+        <constraints nullable="false"/>
+      </column>
+      <column name="humidity" type="FLOAT4">
+        <constraints nullable="false"/>
+      </column>
+      <column name="light" type="FLOAT4">
+        <constraints nullable="false"/>
+      </column>
+      <column name="soil_moisture" type="FLOAT4">
+        <constraints nullable="false"/>
+      </column>
+      <column name="temperature" type="FLOAT4">
+        <constraints nullable="false"/>
+      </column>
+      <column name="unit" type="TEMPERATURE_UNIT">
+        <constraints nullable="false"/>
+      </column>
+      <column name="measured_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+      <column name="plant_uuid" type="UUID">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>
