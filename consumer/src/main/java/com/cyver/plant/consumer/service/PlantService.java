@@ -1,9 +1,9 @@
 package com.cyver.plant.consumer.service;
 
 import com.cyver.plant.commons.avro.PlantAvro;
-import com.cyver.plant.commons.entities.Plant;
+import com.cyver.plant.database.tables.dtos.Plant;
 
-public interface PlantService {
+public interface  PlantService {
 
     Plant creatIfNotExists(final PlantAvro plantAvro);
 

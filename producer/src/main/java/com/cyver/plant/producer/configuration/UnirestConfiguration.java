@@ -12,8 +12,8 @@ import kong.unirest.core.UnirestInstance;
 import kong.unirest.jackson.JacksonObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
-@Configuration
 @Slf4j
+@Configuration
 public class UnirestConfiguration {
 
     @Bean
@@ -23,11 +23,11 @@ public class UnirestConfiguration {
 
     @Bean
     public UnirestInstance unirest(final JacksonObjectMapper unirestJacksonObjectMapper) {
-        UnirestInstance unirest = Unirest.primaryInstance();
+        final UnirestInstance unirest = Unirest.primaryInstance();
         unirest.config().setObjectMapper(unirestJacksonObjectMapper);
         unirest.config().connectTimeout(5000);
         unirest.config().instrumentWith(requestSummary -> {
-            long startNanos = System.nanoTime();
+            final long startNanos = System.nanoTime();
             return (responseSummary, exception) -> log.info("path: {} status: {} time: {}",
                     requestSummary.getRawPath(),
                     Objects.isNull(responseSummary) ? "N/A" : responseSummary.getStatus(),

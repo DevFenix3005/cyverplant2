@@ -1,7 +1,5 @@
 package com.cyver.plant.producer.configuration;
 
-import java.util.List;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -16,18 +14,26 @@ public class PlantProperties {
 
     private String topic;
 
-    private List<NodeConfiguration> nodes;
+    private String interval;
+
+    private String statusInterval;
+
+    private Hub hub;
 
     @Data
-    public static class NodeConfiguration {
-        private String name;
+    public static final class Hub {
+        private Location location;
 
-        private String type;
+        private String ipifyUrl;
+    }
 
-        private String url;
+    @Data
+    public static final class Location {
+        private String cityName;
 
-        private float minSoilMoisture;
+        private Double latitude;
 
+        private Double longitude;
     }
 
 }

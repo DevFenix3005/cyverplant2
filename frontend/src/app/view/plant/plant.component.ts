@@ -4,7 +4,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button'
-import {PlantResourceService, PlantDto} from '../../client';
+import {PlantResourceService, PlantWithLastEnvironmentalMeasurement} from '../../client';
 import {DatePipe, UpperCasePipe} from '@angular/common';
 
 
@@ -17,7 +17,7 @@ import {DatePipe, UpperCasePipe} from '@angular/common';
 export class PlantComponent implements OnInit {
 
   private readonly plantResourceService: PlantResourceService = inject(PlantResourceService)
-  plants: PlantDto[] = []
+  plants: PlantWithLastEnvironmentalMeasurement[] = []
 
   ngOnInit(): void {
     this.plantResourceService.getPlantsByOwner().subscribe(plants => {

@@ -1,8 +1,8 @@
 package com.cyver.plant.consumer.service;
 
 import com.cyver.plant.commons.avro.EnvironmentalMeasurementAvro;
-import com.cyver.plant.commons.entities.EnvironmentalMeasurement;
-import com.cyver.plant.commons.entities.Plant;
+import com.cyver.plant.database.tables.dtos.EnvironmentalMeasurement;
+import com.cyver.plant.database.tables.dtos.Plant;
 
 public interface EnvironmentalMeasurementService {
 

@@ -1,0 +1,42 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <changeSet author="Roberto D. Cazarin" id="20250324-3">
+    <createTable tableName="owners">
+      <column name="owner_uuid" type="UUID">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="pk_owners"/>
+      </column>
+      <column name="complete_name" type="VARCHAR(120)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="email" type="VARCHAR(100)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="picture" type="VARCHAR(200)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="nickname" type="VARCHAR(80)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="auth0_sid" type="VARCHAR(80)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet author="Roberto D. Cazarin" id="20250324-4">
+    <createIndex indexName="owners_auth0_sid_idx" tableName="owners" unique="true">
+      <column name="auth0_sid"/>
+    </createIndex>
+  </changeSet>
+  <changeSet id="202250325-2" author="Roberto D. Cazarin">
+    <addDefaultValue tableName="owners" columnName="owner_uuid"
+                     defaultValueComputed="gen_random_uuid()"/>
+  </changeSet>
+  <changeSet id="1743103210400-1" author="Roberto D. Cazarin">
+    <dropColumn tableName="owners" schemaName="public" columnName="auth0_sid"/>
+    <addUniqueConstraint tableName="owners" columnNames="email" constraintName="uk_owners_email"/>
+    <addUniqueConstraint tableName="owners" columnNames="nickname" constraintName="uk_owners_nickname"/>
+  </changeSet>
+</databaseChangeLog>

@@ -7,11 +7,4 @@ plugins {
     id("buildlogic.java-common-conventions")
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
-    id("io.spring.dependency-management")
-}
-
-dependencyManagement {
-    imports {
-        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
-    }
 }

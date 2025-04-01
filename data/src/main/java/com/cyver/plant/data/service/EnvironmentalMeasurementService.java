@@ -3,10 +3,10 @@ package com.cyver.plant.data.service;
 import java.util.List;
 import java.util.UUID;
 
-import com.cyver.plant.commons.dto.EnvironmentalMeasurementDto;
+import com.cyver.plant.database.domain.tables.dtos.EnvironmentalMeasurement;
 
 public interface EnvironmentalMeasurementService {
 
-    List<EnvironmentalMeasurementDto> getEnvironmentalMeasurementsByPlant(UUID plantId);
+    List<EnvironmentalMeasurement> getEnvironmentalMeasurementsByPlant(UUID plantId);
 
 }

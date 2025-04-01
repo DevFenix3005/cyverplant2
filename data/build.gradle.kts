@@ -14,15 +14,11 @@ configurations {
 
 
 dependencies {
-    implementation(project(":database"))
     implementation(project(":utilities"))
+    implementation(libs.bundles.data)
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.okta.spring:okta-spring-boot-starter")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     runtimeOnly("org.postgresql:postgresql")
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
 
 }

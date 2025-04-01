@@ -7,14 +7,7 @@ plugins {
 }
 
 dependencies {
-    api(project(":commons"))
-
-    api("com.google.guava:guava")
-
-    implementation("org.mapstruct:mapstruct")
-    compileOnly("org.projectlombok:lombok")
-
-    annotationProcessor("org.projectlombok:lombok")
-    annotationProcessor("org.mapstruct:mapstruct-processor")
-    annotationProcessor("org.projectlombok:lombok-mapstruct-binding")
+    api(project(":database"))
+    api(libs.bundles.utils)
+    annotationProcessor(libs.bundles.utilsprocessors)
 }

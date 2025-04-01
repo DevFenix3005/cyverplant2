@@ -18,3 +18,6 @@ include("producer")
 include("consumer")
 include("data")
 include("frontend")
+include("migration")
+include("database:custom-jooq")
+findProject(":database:custom-jooq")?.name = "custom-jooq"

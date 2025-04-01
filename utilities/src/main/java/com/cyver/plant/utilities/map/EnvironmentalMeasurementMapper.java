@@ -9,31 +9,29 @@ import org.mapstruct.factory.Mappers;
 import com.cyver.plant.commons.avro.EnvironmentalMeasurementAvro;
 import com.cyver.plant.commons.avro.LocationAvro;
 import com.cyver.plant.commons.avro.PlantAvro;
-import com.cyver.plant.commons.dto.EnvironmentalMeasurementDto;
-import com.cyver.plant.commons.entities.EnvironmentalMeasurement;
-import com.cyver.plant.commons.entities.Plant;
 import com.cyver.plant.commons.node.NodeMeasurementResponse;
+import com.cyver.plant.database.tables.dtos.EnvironmentalMeasurement;
+import com.cyver.plant.database.tables.dtos.Plant;
 
 @Mapper()
 interface EnvironmentalMeasurementMapper {
 
     EnvironmentalMeasurementMapper INSTANCE = Mappers.getMapper(EnvironmentalMeasurementMapper.class);
 
-    EnvironmentalMeasurementDto toDto(EnvironmentalMeasurement environmentalMeasurement);
-
-    @Mapping(target = "uuid", ignore = true)
-    @Mapping(target = "plant", source = "plant")
+    @Mapping(target = "environmentalMeasurementUuid", expression = "java(java.util.UUID.randomUUID())")
+    @Mapping(target = "unit", source = "measurementAvro.temperatureUnit")
     @Mapping(target = "measuredAt", expression = "java(timestampToLocalDateTime(measurementAvro))")
+    @Mapping(target = "plantUuid", source = "plant.plantUuid")
     EnvironmentalMeasurement toEntity(EnvironmentalMeasurementAvro measurementAvro, Plant plant);
 
     @Mapping(target = "plantInfo", ignore = true)
     @Mapping(target = "plantInfoBuilder", expression = "java(plantInfoBuilder(ownerId, plantName, plantType, longitude, latitude))")
     @Mapping(target = "timestamp", expression = "java(java.time.Instant.now().toEpochMilli())")
     EnvironmentalMeasurementAvro toAvroMessage(NodeMeasurementResponse nodeMeasurementResponse, String ownerId, String plantName,
-            String plantType, float longitude, float latitude);
+            String plantType, double longitude, double latitude);
 
-    default PlantAvro.Builder plantInfoBuilder(final String ownerId, final String plantName, final String plantType, float longitude,
-            float latitude) {
+    default PlantAvro.Builder plantInfoBuilder(final String ownerId, final String plantName, final String plantType, Double longitude,
+            Double latitude) {
         return PlantAvro.newBuilder()
                 .setPlantLocation(new LocationAvro(latitude, longitude))
                 .setOwnerId(ownerId)

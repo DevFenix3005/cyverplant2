@@ -1,0 +1,35 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <changeSet author="Roberto D. Cazarin" id="1743153396977-1">
+    <createTable tableName="configuration_of_nodes">
+      <column name="node_id" type="bigserial">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="node_pkey"/>
+      </column>
+      <column name="node_name" type="VARCHAR(150)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="node_type" type="VARCHAR(150)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="node_url" type="VARCHAR(150)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet id="1743153518244-1" author="Roberto D. Cazarin">
+    <createIndex tableName="configuration_of_nodes" indexName="node_name_and_type_index" unique="true">
+      <column name="node_name"/>
+      <column name="node_type"/>
+    </createIndex>
+  </changeSet>
+  <changeSet id="1743200040476-1" author="Roberto D. Cazarin">
+    <addColumn tableName="configuration_of_nodes">
+      <column name="node_able" type="boolean" defaultValue="true">
+        <constraints nullable="false"/>
+      </column>
+    </addColumn>
+  </changeSet>
+</databaseChangeLog>

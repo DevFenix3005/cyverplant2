@@ -8,9 +8,12 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.36/5a30490a6e14977d97d9c73c924c1f1b5311ea95/lombok-1.18.36.jar" />
         </processorPath>
         <module name="plant-ecosystem.commons.main" />
-        <module name="plant-ecosystem.producer.main" />
+        <module name="plant-ecosystem.database.custom-jooq.main" />
         <module name="plant-ecosystem.data.main" />
+        <module name="plant-ecosystem.database.main" />
         <module name="plant-ecosystem.consumer.main" />
+        <module name="plant-ecosystem.migration.main" />
+        <module name="plant-ecosystem.producer.main" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
