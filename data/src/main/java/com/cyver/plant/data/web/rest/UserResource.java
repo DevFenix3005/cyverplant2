@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.MessageFormat;
 import java.util.Map;
-import java.util.Optional;
 
 import com.cyver.plant.commons.dto.LogoutDto;
 import com.cyver.plant.commons.dto.UserDto;
