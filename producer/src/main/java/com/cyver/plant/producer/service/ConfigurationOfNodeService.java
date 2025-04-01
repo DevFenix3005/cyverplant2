@@ -2,17 +2,21 @@ package com.cyver.plant.producer.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import com.cyver.plant.databaseh2.tables.dtos.ConfigurationOfNode;
 
-import com.cyver.plant.database.domain.tables.dtos.ConfigurationOfNode;
-
-@Service
-public interface NodeConfigurationService {
+public interface ConfigurationOfNodeService {
 
     List<ConfigurationOfNode> getAllNodes();
 
+    List<ConfigurationOfNode> getAllAblesNodes();
+
     ConfigurationOfNode createNode(ConfigurationOfNode node);
+
+    ConfigurationOfNode updateNode(ConfigurationOfNode node);
 
     void deleteNode(ConfigurationOfNode node);
 
+    List<ConfigurationOfNode> fetchByName(String filterText);
+
+    ConfigurationOfNode fetchById(Long aLong);
 }

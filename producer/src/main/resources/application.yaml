@@ -1,4 +1,12 @@
 spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:file:~/.h2database/cyver-plant
+    username: sa
+    password: 1234
+    driverClassName: org.h2.Driver
   application.name: Producer
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
@@ -18,13 +26,15 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
 
 plant:
+  hub:
+    ipify-url: ${IPIFY_URL}
+    location:
+      latitude: ${PLANT_LATITUDE}
+      longitude: ${PLANT_LONGITUDE}
+      city-name: ${PLANT_CITY_NAME}
   interval: ${PLANT_INTERVAL}
   user: ${PLANT_USER}
   topic: ${KAFKA_TOPIC}
-  nodes:
-    - name: "node1"
-      type: "carnivora"
-      url: "http://192.168.0.13:8080/measurement"
-      minSoilMoisture: 60
+  status-interval: ${PLANT_STATUS_INTERVAL}
 
 client.id: "ccloud-springboot-client-a7fad8aa-c867-44b1-9ab0-491c708d4db7"

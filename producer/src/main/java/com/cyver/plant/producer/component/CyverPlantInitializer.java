@@ -23,8 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CyverPlantInitializer implements CommandLineRunner {
 
-    private static final String DYNAMIC_PROPERTIES_SOURCE_NAME = "dynamicProperties";
-
     private final UnirestInstance unirest;
 
     private final DatabaseReader maxmindDatabase;
@@ -35,18 +33,18 @@ public class CyverPlantInitializer implements CommandLineRunner {
     public void run(final String... args) throws Exception {
         log.info("Starting CyverPlant/Producer: {}", plantProperties);
 
-        HttpResponse<String> response = unirest.get(plantProperties.getHub().getIpifyUrl()).asString();
+        final HttpResponse<String> response = unirest.get(plantProperties.getHub().getIpifyUrl()).asString();
         if (response.getStatus() == 200) {
-            String ip = response.getBody();
+            final String ip = response.getBody();
             try {
-                InetAddress inetAddress = InetAddress.getByName(ip);
-                CityResponse cityResponse = maxmindDatabase.city(inetAddress);
-                Location location = cityResponse.getLocation();
+                final InetAddress inetAddress = InetAddress.getByName(ip);
+                final CityResponse cityResponse = maxmindDatabase.city(inetAddress);
+                final Location location = cityResponse.getLocation();
                 plantProperties.getHub().getLocation().setLatitude(location.getLatitude());
                 plantProperties.getHub().getLocation().setLongitude(location.getLongitude());
                 plantProperties.getHub().getLocation().setCityName(cityResponse.getCity().getName());
                 log.info("Current location of the hub: {}", plantProperties.getHub().getLocation());
-            } catch (IOException | GeoIp2Exception e) {
+            } catch (final IOException | GeoIp2Exception e) {
                 log.error("Error getting location:", e);
             }
         }

@@ -1,7 +1,6 @@
 package com.cyver.plant.producer.service.impl;
 
-import java.io.IOException;
-import java.net.InetAddress;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -15,15 +14,13 @@ import com.cyver.plant.commons.node.NodeMeasurementResponse;
 import com.cyver.plant.producer.configuration.PlantProperties;
 import com.cyver.plant.producer.service.PlantMeasurementProducerService;
 import com.cyver.plant.utilities.map.MapUtilComponent;
-import com.maxmind.geoip2.DatabaseReader;
-import com.maxmind.geoip2.exception.GeoIp2Exception;
-import com.maxmind.geoip2.model.CityResponse;
-import com.maxmind.geoip2.record.Location;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@AllArgsConstructor(onConstructor_ = { @Autowired })
 public class PlantMeasurementProducerServiceImpl implements PlantMeasurementProducerService {
 
     private final KafkaTemplate<String, EnvironmentalMeasurementAvro> kafkaTemplate;
@@ -32,34 +29,13 @@ public class PlantMeasurementProducerServiceImpl implements PlantMeasurementProd
 
     private final PlantProperties plantProperties;
 
-    private final DatabaseReader maxmindDatabase;
-
-    @Autowired
-    public PlantMeasurementProducerServiceImpl(
-            final KafkaTemplate<String, EnvironmentalMeasurementAvro> kafkaTemplate,
-            final MapUtilComponent mapUtilComponent,
-            final PlantProperties plantProperties, final DatabaseReader maxmindDatabase) {
-        this.kafkaTemplate = kafkaTemplate;
-        this.mapUtilComponent = mapUtilComponent;
-        this.plantProperties = plantProperties;
-        this.maxmindDatabase = maxmindDatabase;
-    }
-
     @Override
     public void sendMessage(final NodeMeasurementResponse nodeMeasurementResponse, String ownerId, String plantName, String plantType) {
 
-        float latitude = 0.0f;
-        float longitude = 0.0f;
+        final PlantProperties.Location location = new PlantProperties.Location();
 
-        try {
-            InetAddress inetAddress = InetAddress.getByName("187.190.28.208");
-            CityResponse response = maxmindDatabase.city(inetAddress);
-            Location location = response.getLocation();
-            latitude = location.getLatitude().floatValue();
-            longitude = location.getLongitude().floatValue();
-        } catch (IOException | GeoIp2Exception e) {
-            log.error("Error getting location:", e);
-        }
+        double latitude = Objects.requireNonNullElse(location.getLatitude(), 0.0);
+        double longitude = Objects.requireNonNullElse(location.getLongitude(), 0.0);
 
         final String topic = plantProperties.getTopic();
         final String key = UUID.randomUUID().toString();

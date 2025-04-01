@@ -4,7 +4,10 @@
 
 plugins {
     id("buildlogic.java-application-conventions")
+    id("com.vaadin") version "24.7.0"
 }
+
+val vaadinVersion by extra("24.7.0")
 
 configurations {
     compileOnly {
@@ -12,20 +15,24 @@ configurations {
     }
 }
 
-
 dependencies {
     implementation(project(":utilities"))
-    implementation("com.konghq:unirest-java-core")
-    implementation("com.konghq:unirest-objectmapper-jackson")
-
+    implementation(libs.bundles.producer)
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.kafka:spring-kafka")
-    implementation("org.apache.avro:avro")
-    implementation("io.confluent:kafka-avro-serializer")
-    implementation("com.maxmind.geoip2:geoip2:2.15.0")
+    implementation("com.vaadin:vaadin-spring-boot-starter")
+    implementation("org.liquibase:liquibase-core")
+    implementation("org.springframework.boot:spring-boot-starter-security")
 
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+    runtimeOnly("com.h2database:h2")
+    testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
 
+dependencyManagement {
+    imports {
+        mavenBom("com.vaadin:vaadin-bom:$vaadinVersion")
+    }
 }
