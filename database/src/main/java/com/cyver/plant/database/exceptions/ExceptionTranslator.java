@@ -1,4 +1,4 @@
-package com.cyver.plant.database.exception;
+package com.cyver.plant.database.exceptions;
 
 import org.jooq.ExecuteContext;
 import org.jooq.ExecuteListener;
