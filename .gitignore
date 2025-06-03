@@ -185,3 +185,4 @@ dist
 
 #producer
 /producer/src/main/frontend
+/data/src/main/resources/public

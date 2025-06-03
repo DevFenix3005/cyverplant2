@@ -2,7 +2,7 @@ package com.cyver.plant.producer.service;
 
 import java.util.List;
 
-import com.cyver.plant.databaseh2.tables.dtos.ConfigurationOfNode;
+import com.cyver.plant.database.producer.tables.dtos.ConfigurationOfNode;
 
 public interface ConfigurationOfNodeService {
 

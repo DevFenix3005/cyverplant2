@@ -4,13 +4,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
-import com.cyver.plant.database.tables.dtos.Owner;
-import com.cyver.plant.database.tables.dtos.Plant;
-import com.cyver.plant.database.tables.dtos.Type;
+import com.cyver.plant.database.cloud.tables.dtos.Owner;
+import com.cyver.plant.database.cloud.tables.dtos.Plant;
+import com.cyver.plant.database.cloud.tables.dtos.Type;
 import com.cyver.plant.commons.avro.PlantAvro;
-import com.cyver.plant.database.tables.records.PlantsRecord;
-import com.cyver.plant.database.udt.dtos.PlantWithLastEnvironmentalMeasurement;
-import com.cyver.plant.database.udt.records.PlantWithLastEnvironmentalMeasurementRecord;
+import com.cyver.plant.database.cloud.tables.records.PlantsRecord;
+import com.cyver.plant.database.cloud.udt.dtos.PlantWithLastEnvironmentalMeasurement;
+import com.cyver.plant.database.cloud.udt.records.PlantWithLastEnvironmentalMeasurementRecord;
 
 @Mapper(uses = { EnvironmentalMeasurementMapper.class })
 interface PlantMapper {

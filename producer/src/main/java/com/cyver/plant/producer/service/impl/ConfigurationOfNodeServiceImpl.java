@@ -6,9 +6,9 @@ import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cyver.plant.databaseh2.Tables;
-import com.cyver.plant.databaseh2.tables.dtos.ConfigurationOfNode;
-import com.cyver.plant.databaseh2.tables.repositories.ConfigurationOfNodeRepository;
+import com.cyver.plant.database.producer.Tables;
+import com.cyver.plant.database.producer.tables.dtos.ConfigurationOfNode;
+import com.cyver.plant.database.producer.tables.repositories.ConfigurationOfNodeRepository;
 import com.cyver.plant.producer.service.ConfigurationOfNodeService;
 
 import lombok.AllArgsConstructor;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+  <Appenders>
+
+    <!-- ✨ JSON Rolling File Appender -->
+    <RollingFile name="JsonFile"
+                 fileName="/var/log/cyverhub-producer/app-log.json"
+                 filePattern="/var/log/cyverhub-producer/app-log-%d{yyyy-MM-dd-HH}.json.gz">
+      <JsonLayout compact="true" eventEol="true"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        <SizeBasedTriggeringPolicy size="10MB"/>
+      </Policies>
+      <DefaultRolloverStrategy max="24"/>
+    </RollingFile>
+
+    <!-- ✨ Console Appender (opcional) -->
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+
+  </Appenders>
+
+  <Loggers>
+
+    <!-- ✨ Tu paquete base -->
+    <Logger name="com.cyver.plant.producer" level="debug" additivity="false">
+      <AppenderRef ref="JsonFile"/>
+    </Logger>
+
+    <!-- ✨ Root Logger -->
+    <Root level="info">
+      <AppenderRef ref="JsonFile"/>
+      <AppenderRef ref="Console"/>
+    </Root>
+
+  </Loggers>
+</Configuration>

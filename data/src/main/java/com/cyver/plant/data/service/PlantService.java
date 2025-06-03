@@ -2,7 +2,7 @@ package com.cyver.plant.data.service;
 
 import java.util.List;
 
-import com.cyver.plant.database.domain.udt.dtos.PlantWithLastEnvironmentalMeasurement;
+import com.cyver.plant.database.cloud.udt.dtos.PlantWithLastEnvironmentalMeasurement;
 
 public interface PlantService {
 

@@ -10,6 +10,9 @@ plugins {
 val vaadinVersion by extra("24.7.0")
 
 configurations {
+    all {
+        exclude(group="org.springframework.boot", module="spring-boot-starter-logging")
+    }
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
     }
@@ -21,6 +24,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.springframework.boot:spring-boot-starter-log4j2")
+    implementation("org.apache.logging.log4j:log4j-layout-template-json")
     implementation("com.vaadin:vaadin-spring-boot-starter")
     implementation("org.liquibase:liquibase-core")
     implementation("org.springframework.boot:spring-boot-starter-security")

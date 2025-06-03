@@ -4,8 +4,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
-import com.cyver.plant.database.tables.dtos.Owner;
-import com.cyver.plant.database.tables.repositories.OwnerRepository;
+import com.cyver.plant.database.cloud.tables.dtos.Owner;
+import com.cyver.plant.database.cloud.tables.repositories.OwnerRepository;
 
 @Component
 public class OwnerUtilComponent {

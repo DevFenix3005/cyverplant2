@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cyver.plant.data.service.EnvironmentalMeasurementService;
 import com.cyver.plant.data.service.PlantService;
-import com.cyver.plant.database.domain.tables.dtos.EnvironmentalMeasurement;
-import com.cyver.plant.database.domain.udt.dtos.PlantWithLastEnvironmentalMeasurement;
+import com.cyver.plant.database.cloud.tables.dtos.EnvironmentalMeasurement;
+import com.cyver.plant.database.cloud.udt.dtos.PlantWithLastEnvironmentalMeasurement;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

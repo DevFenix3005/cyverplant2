@@ -17,7 +17,7 @@
         </compositeConfiguration>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:/Gradle/current" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../../../Gradle/current" />
         <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>

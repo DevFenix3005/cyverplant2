@@ -17,6 +17,7 @@ jooq-core = { module = "org.jooq:jooq", version.ref = "jooq" }
 jooq-meta = { module = "org.jooq:jooq-meta", version.ref = "jooq" }
 jooq-codegen = { module = "org.jooq:jooq-codegen", version.ref = "jooq" }
 jooq-metaex = {module = "org.jooq:jooq-meta-extensions", version.ref = "jooq" }
+jooq-liquibase = { module = "org.jooq:jooq-meta-extensions-liquibase", version.ref = "jooq" }
 apache-avro = { module = "org.apache.avro:avro", version.ref = "avro" }
 confluent-kafka = { module = "io.confluent:kafka-avro-serializer", version.ref = "confluent" }
 google-guava = { module = "com.google.guava:guava", version.ref = "guava" }
@@ -35,7 +36,7 @@ h2 = { module = "com.h2database:h2", version = "2.3.232" }
 
 [bundles]
 jooq = ["jooq-core", "jooq-meta", "jooq-codegen", "pluralize"]
-jooqcodegen = ["jooq-core", "jooq-meta", "jooq-metaex", "postgres"]
+jooqcodegen = ["jooq-core", "jooq-meta", "jooq-metaex", "postgres", "jooq-liquibase"]
 commons = ["jetbrains-annotations", "apache-avro"]
 database = ["jooq-core"]
 utils = ["google-guava", "mapstruct-core"]

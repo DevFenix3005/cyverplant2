@@ -7,7 +7,7 @@ import com.cyver.plant.commons.exceptions.NodeResponseFailedException;
 import com.cyver.plant.commons.node.NodeMeasurementRequest;
 import com.cyver.plant.commons.node.NodeMeasurementResponse;
 import com.cyver.plant.commons.shared.TemperatureUnit;
-import com.cyver.plant.databaseh2.tables.dtos.ConfigurationOfNode;
+import com.cyver.plant.database.producer.tables.dtos.ConfigurationOfNode;
 import com.cyver.plant.producer.service.NodeCommunicationService;
 
 import elemental.json.Json;

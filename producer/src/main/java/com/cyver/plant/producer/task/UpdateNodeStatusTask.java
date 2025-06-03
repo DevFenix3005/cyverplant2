@@ -3,7 +3,7 @@ package com.cyver.plant.producer.task;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.cyver.plant.databaseh2.tables.dtos.ConfigurationOfNode;
+import com.cyver.plant.database.producer.tables.dtos.ConfigurationOfNode;
 import com.cyver.plant.producer.dto.ConfigurationOfNodesWrapper;
 import com.cyver.plant.producer.service.ConfigurationOfNodeService;
 import com.cyver.plant.producer.service.NodeCommunicationService;

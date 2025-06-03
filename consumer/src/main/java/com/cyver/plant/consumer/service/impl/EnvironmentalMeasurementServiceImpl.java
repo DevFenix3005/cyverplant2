@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.cyver.plant.commons.avro.EnvironmentalMeasurementAvro;
 import com.cyver.plant.consumer.service.EnvironmentalMeasurementService;
-import com.cyver.plant.database.tables.repositories.EnvironmentalMeasurementRepository;
-import com.cyver.plant.database.tables.dtos.EnvironmentalMeasurement;
-import com.cyver.plant.database.tables.dtos.Plant;
+import com.cyver.plant.database.cloud.tables.repositories.EnvironmentalMeasurementRepository;
+import com.cyver.plant.database.cloud.tables.dtos.EnvironmentalMeasurement;
+import com.cyver.plant.database.cloud.tables.dtos.Plant;
 import com.cyver.plant.utilities.map.MapUtilComponent;
 
 import lombok.AllArgsConstructor;

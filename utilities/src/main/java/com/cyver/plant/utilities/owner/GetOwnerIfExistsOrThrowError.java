@@ -3,8 +3,8 @@ package com.cyver.plant.utilities.owner;
 import java.util.UUID;
 
 import com.cyver.plant.commons.exceptions.OwnerNotFoundException;
-import com.cyver.plant.database.tables.dtos.Owner;
-import com.cyver.plant.database.tables.repositories.OwnerRepository;
+import com.cyver.plant.database.cloud.tables.dtos.Owner;
+import com.cyver.plant.database.cloud.tables.repositories.OwnerRepository;
 
 final class GetOwnerIfExistsOrThrowError {
 

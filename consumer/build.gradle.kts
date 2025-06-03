@@ -5,6 +5,7 @@
 plugins {
     id("buildlogic.java-application-conventions")
 }
+val springCloudGcpVersion by extra("6.1.1")
 
 configurations {
     compileOnly {
@@ -19,4 +20,29 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.kafka:spring-kafka")
+    implementation("com.google.cloud.sql:postgres-socket-factory")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("com.google.cloud:spring-cloud-gcp-dependencies:$springCloudGcpVersion")
+    }
+}
+
+docker {
+    springBootApplication {
+        val tagVersion = "1.0.10"
+        val dockerImageName = "cyver/plant-consumer"
+        val dockerImageNameFull = "$dockerImageName:$tagVersion"
+        baseImage.set("amazoncorretto:21-alpine3.21")
+        ports.set(listOf(9090, 8080))
+        images.set(
+            setOf(
+                dockerImageNameFull,
+                "${dockerImageName}:latest",
+                "us-central1-docker.pkg.dev/reflected-jet-458304-g4/cyverplant-container/${dockerImageNameFull}"
+            )
+        )
+        jvmArgs.set(listOf("-Dspring.profiles.active=production", "-Xmx2048m"))
+    }
 }

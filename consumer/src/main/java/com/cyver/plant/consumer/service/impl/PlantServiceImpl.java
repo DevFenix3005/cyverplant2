@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 
 import com.cyver.plant.commons.avro.PlantAvro;
 import com.cyver.plant.consumer.service.PlantService;
-import com.cyver.plant.database.custom_repository.PlantRepositoryCustom;
-import com.cyver.plant.database.Tables;
-import com.cyver.plant.database.tables.dtos.Plant;
-import com.cyver.plant.database.tables.repositories.OwnerRepository;
-import com.cyver.plant.database.tables.repositories.PlantRepository;
-import com.cyver.plant.database.tables.repositories.TypeRepository;
-import com.cyver.plant.database.tables.dtos.Owner;
-import com.cyver.plant.database.tables.dtos.Type;
+import com.cyver.plant.database.cloud.custom_repository.PlantRepositoryCustom;
+import com.cyver.plant.database.cloud.Tables;
+import com.cyver.plant.database.cloud.tables.dtos.Plant;
+import com.cyver.plant.database.cloud.tables.repositories.OwnerRepository;
+import com.cyver.plant.database.cloud.tables.repositories.PlantRepository;
+import com.cyver.plant.database.cloud.tables.repositories.TypeRepository;
+import com.cyver.plant.database.cloud.tables.dtos.Owner;
+import com.cyver.plant.database.cloud.tables.dtos.Type;
 import com.cyver.plant.utilities.map.MapUtilComponent;
 import com.cyver.plant.utilities.owner.OwnerUtilComponent;
 

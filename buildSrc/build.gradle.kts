@@ -12,12 +12,13 @@ repositories {
     mavenCentral()
 }
 
-val springbootPlugin = "3.4.2"
+val springbootPlugin = "3.4.5"
 val springbootManagementVersions = "1.1.7"
 val avroPluginVersion = "1.9.1"
 val nodePluginVersion = "7.1.0"
 val liquibasePluginVersion = "3.0.2"
 val liquibaseCoreVersion = "4.31.1"
+val dockerVersion = "9.4.0"
 
 dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
@@ -31,4 +32,5 @@ dependencies {
     // https://mvnrepository.com/artifact/org.liquibase.gradle/org.liquibase.gradle.gradle.plugin
     implementation("org.liquibase:liquibase-core:${liquibaseCoreVersion}")
     implementation("org.liquibase.gradle:org.liquibase.gradle.gradle.plugin:${liquibasePluginVersion}")
+    implementation("com.bmuschko.docker-spring-boot-application:com.bmuschko.docker-spring-boot-application.gradle.plugin:${dockerVersion}")
 }

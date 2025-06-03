@@ -37,4 +37,6 @@ plant:
   topic: ${KAFKA_TOPIC}
   status-interval: ${PLANT_STATUS_INTERVAL}
 
+vaadin.force.production.build: true
+
 client.id: "ccloud-springboot-client-a7fad8aa-c867-44b1-9ab0-491c708d4db7"

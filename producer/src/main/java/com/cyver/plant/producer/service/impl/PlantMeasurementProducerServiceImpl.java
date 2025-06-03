@@ -32,8 +32,7 @@ public class PlantMeasurementProducerServiceImpl implements PlantMeasurementProd
     @Override
     public void sendMessage(final NodeMeasurementResponse nodeMeasurementResponse, String ownerId, String plantName, String plantType) {
 
-        final PlantProperties.Location location = new PlantProperties.Location();
-
+        final PlantProperties.Location location = plantProperties.getHub().getLocation();
         double latitude = Objects.requireNonNullElse(location.getLatitude(), 0.0);
         double longitude = Objects.requireNonNullElse(location.getLongitude(), 0.0);
 

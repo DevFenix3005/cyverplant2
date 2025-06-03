@@ -34,7 +34,7 @@ jooq {
             configuration {
                 jdbc {
                     driver = "org.postgresql.Driver"
-                    url = "jdbc:postgresql://localhost:15432/cyver-plant"
+                    url = "jdbc:postgresql://localhost:5432/cyver-plant"
                     user = "postgres"
                     password = "1234"
                 }
@@ -75,7 +75,7 @@ jooq {
                         isConstructorPropertiesAnnotationOnRecords = true
                     }
                     target {
-                        packageName = "com.cyver.plant.database"
+                        packageName = "com.cyver.plant.database.cloud"
                     }
 
                 }
@@ -86,23 +86,52 @@ jooq {
             configuration {
                 generator {
                     database {
-                        name = "org.jooq.meta.extensions.ddl.DDLDatabase"
-                        java = "org.jooq.meta.h2.H2Database"
+                        name = "org.jooq.meta.extensions.liquibase.LiquibaseDatabase"
                         properties {
 
                             property {
+                                key = "rootPath"
+                                value = "${project.projectDir}/../migration/src/main/db-h2"
+                            }
+
+                            // Specify the classpath location of your XML, YAML, or JSON script.
+                            property {
                                 key = "scripts"
-                                value = "src/main/resources/dbh2/schema.sql"
+                                value = "main.xml"
                             }
 
+                            // Whether you want to include liquibase tables in generated output
+                            //
+                            // - false (default)
+                            // - true: includes DATABASECHANGELOG and DATABASECHANGELOGLOCK tables
                             property {
-                                key = "unqualifiedSchema"
-                                value = "none"
+                                key = "includeLiquibaseTables"
+                                value = "false"
                             }
 
+                            // Whether you want to use jOOQ's translating ParsingConnection to translate
+                            // between your dialect (e.g. Oracle), and jOOQ's in-memory H2 dialect
+                            //
+                            // - false (default)
+                            // - true: translates e.g. from VARCHAR2(100) to VARCHAR(100)
                             property {
-                                key = "defaultNameCase"
-                                value = "as_is"
+                                key = "useParsingConnection"
+                                value = "false"
+                            }
+
+                            // Properties prefixed "database." will be passed on to the liquibase.database.Database class
+                            // if a matching setter is found
+                            property {
+                                key = "database.liquibaseSchemaName"
+                                value = "public"
+                            }
+
+                            // The property "changeLogParameters.contexts" will be passed on to the
+                            // liquibase.database.Database.update() call (jOOQ 3.13.2+).
+                            // See https://www.liquibase.org/documentation/contexts.html
+                            property {
+                                key = "changeLogParameters.contexts"
+                                value = "!test"
                             }
                         }
                         generate {
@@ -116,7 +145,7 @@ jooq {
                             isConstructorPropertiesAnnotationOnPojos = true
                         }
                         target {
-                            packageName = "com.cyver.plant.databaseh2"
+                            packageName = "com.cyver.plant.database.producer"
                         }
                     }
                 }

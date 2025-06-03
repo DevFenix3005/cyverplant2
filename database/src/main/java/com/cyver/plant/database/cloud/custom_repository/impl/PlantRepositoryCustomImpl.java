@@ -1,4 +1,4 @@
-package com.cyver.plant.database.custom_repository.impl;
+package com.cyver.plant.database.cloud.custom_repository.impl;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -6,9 +6,9 @@ import java.util.UUID;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
-import com.cyver.plant.database.custom_repository.PlantRepositoryCustom;
-import com.cyver.plant.database.Tables;
-import com.cyver.plant.database.tables.records.PlantsRecord;
+import com.cyver.plant.database.cloud.custom_repository.PlantRepositoryCustom;
+import com.cyver.plant.database.cloud.Tables;
+import com.cyver.plant.database.cloud.tables.records.PlantsRecord;
 
 @Repository
 public class PlantRepositoryCustomImpl implements PlantRepositoryCustom {

@@ -6,7 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.flow.component.Key;
-import com.cyver.plant.databaseh2.tables.dtos.ConfigurationOfNode;
+import com.cyver.plant.database.producer.tables.dtos.ConfigurationOfNode;
 import com.cyver.plant.producer.service.ConfigurationOfNodeService;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;
@@ -36,7 +36,9 @@ public class ConfigurationNodeEditor extends VerticalLayout implements KeyNotifi
     private ConfigurationOfNode configuration;
 
     /* Fields to edit properties in Customer entity */
-    final TextField nodeType = new TextField("Type");
+    final TextField nodeName = new TextField("Nombre");
+
+    final TextField nodeType = new TextField("Tipo");
 
     final TextField nodeUrl = new TextField("URL");
 
@@ -58,7 +60,7 @@ public class ConfigurationNodeEditor extends VerticalLayout implements KeyNotifi
     public ConfigurationNodeEditor(final ConfigurationOfNodeService configurationOfNodeService) {
         this.configurationOfNodeService = configurationOfNodeService;
 
-        add(nodeType, nodeUrl, actions);
+        add(nodeName, nodeType, nodeUrl, actions);
 
         // bind using naming convention
         binder.bindInstanceFields(this);
@@ -120,7 +122,7 @@ public class ConfigurationNodeEditor extends VerticalLayout implements KeyNotifi
         setVisible(true);
 
         // Focus first name initially
-        nodeType.focus();
+        nodeName.focus();
     }
 
 }

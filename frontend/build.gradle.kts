@@ -17,3 +17,15 @@ tasks.register("StartApp", NpmTask::class) {
     group = "FrontendModule"
     args.set(arrayListOf("start"))
 }
+
+tasks.register("BuildApp", NpmTask::class) {
+  description = "Para construir la aplicacion."
+  group = "FrontendModule"
+  args.set(arrayListOf("run", "build"))
+}
+
+tasks.register("BuildAppProd", NpmTask::class) {
+  description = "Para construir la aplicacion para produccion."
+  group = "FrontendModule"
+  args.set(arrayListOf("run", "build:prod"))
+}

@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.cyver.plant.commons.exceptions.NodeResponseFailedException;
-import com.cyver.plant.databaseh2.tables.dtos.ConfigurationOfNode;
+import com.cyver.plant.database.producer.tables.dtos.ConfigurationOfNode;
 import com.cyver.plant.producer.configuration.PlantProperties;
 import com.cyver.plant.producer.service.NodeCommunicationService;
 import com.cyver.plant.producer.service.ConfigurationOfNodeService;

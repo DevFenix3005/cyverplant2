@@ -11,26 +11,35 @@ repositories {
 }
 
 liquibase {
-    activities.create("dev") {
+    activities.create("postgres-dev") {
         arguments = mapOf(
-            "changelogFile" to "src\\main\\db\\main.xml",
-            "url" to "jdbc:postgresql://localhost:15432/cyver-plant",
+            "changelogFile" to "src\\main\\db-postgres\\main.xml",
+            "url" to "jdbc:postgresql://localhost:5432/cyver-plant",
             "username" to "postgres",
             "password" to "1234",
             "logLevel" to "info",
-            "tag" to "dev-002"
+            "tag" to "postgres-001"
+        )
+    }
+    activities.create("postgres-cloud") {
+        arguments = mapOf(
+            "changelogFile" to "src\\main\\db-postgres\\main.xml",
+            "url" to "jdbc:postgresql://35.232.118.229/cyver-plant?ssl=true&sslmode=verify-ca",
+            "username" to "plantadmin",
+            "password" to "5=Sz_J\\Mf/*,`.<(",
+            "logLevel" to "info",
+            "tag" to "postgres-001"
         )
     }
     activities.create("h2") {
         arguments = mapOf(
-            "changelogFile" to "src\\main\\dbh2\\main.xml",
-            "url" to "jdbc:h2:file:./build/h2db/cyver-plant",
+            "changelogFile" to "src\\main\\db-h2\\main.xml",
+            "url" to "jdbc:h2:file:~/.h2database/cyver-plant",
             "username" to "sa",
             "password" to "1234",
             "logLevel" to "info",
-            "tag" to "dev-002"
+            "tag" to "h2-001"
         )
     }
-    runList = "h2"
-
+    runList = "postgres-dev"
 }

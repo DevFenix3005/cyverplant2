@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cyver.plant.data.service.EnvironmentalMeasurementService;
-import com.cyver.plant.database.domain.tables.dtos.EnvironmentalMeasurement;
-import com.cyver.plant.database.domain.tables.repositories.EnvironmentalMeasurementRepository;
+import com.cyver.plant.database.cloud.tables.dtos.EnvironmentalMeasurement;
+import com.cyver.plant.database.cloud.tables.repositories.EnvironmentalMeasurementRepository;
 
 import lombok.AllArgsConstructor;
 

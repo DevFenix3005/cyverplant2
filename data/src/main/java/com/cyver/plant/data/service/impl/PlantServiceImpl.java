@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cyver.plant.data.service.PlantService;
-import com.cyver.plant.database.domain.Routines;
-import com.cyver.plant.database.domain.tables.repositories.OwnerRepository;
-import com.cyver.plant.database.domain.tables.dtos.Owner;
-import com.cyver.plant.database.domain.udt.dtos.PlantWithLastEnvironmentalMeasurement;
+import com.cyver.plant.database.cloud.Routines;
+import com.cyver.plant.database.cloud.tables.repositories.OwnerRepository;
+import com.cyver.plant.database.cloud.tables.dtos.Owner;
+import com.cyver.plant.database.cloud.udt.dtos.PlantWithLastEnvironmentalMeasurement;
 import com.cyver.plant.utilities.owner.OwnerUtilComponent;
 
 import lombok.AllArgsConstructor;

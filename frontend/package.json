@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production --aot",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "openapi-gen": "openapi-generator-cli generate -g typescript-angular -o src/app/client -i http://localhost:8081/v3/api-docs"
