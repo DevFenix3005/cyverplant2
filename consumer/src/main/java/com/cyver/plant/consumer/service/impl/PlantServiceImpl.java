@@ -38,7 +38,7 @@ public class PlantServiceImpl implements PlantService {
     private final OwnerUtilComponent ownerUtilComponent;
 
     @Override
-    public Plant creatIfNotExists(final PlantAvro plantAvro) {
+    public Plant createIfNotExists(final PlantAvro plantAvro) {
         final Owner owner = ownerUtilComponent.getOwnerByUUIDIfExists(ownerRepository, UUID.fromString(plantAvro.getOwnerId()));
         return fetchPlantByNameAndOwner(owner, plantAvro.getPlantName())
                 .orElseGet(() -> createAndSavePlant(plantAvro, owner));
