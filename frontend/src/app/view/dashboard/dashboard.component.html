@@ -1,1 +1,4 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <app-dashboard-statistics [plantCount]="plants.length"></app-dashboard-statistics>
+  <app-plant-list [plants]="plants"></app-plant-list>
+</div>
