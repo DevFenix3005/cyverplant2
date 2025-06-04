@@ -5,6 +5,6 @@ import com.cyver.plant.database.cloud.tables.dtos.Plant;
 
 public interface  PlantService {
 
-    Plant creatIfNotExists(final PlantAvro plantAvro);
+    Plant createIfNotExists(final PlantAvro plantAvro);
 
 }

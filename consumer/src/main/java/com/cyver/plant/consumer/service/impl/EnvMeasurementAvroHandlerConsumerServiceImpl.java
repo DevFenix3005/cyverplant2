@@ -31,7 +31,7 @@ public class EnvMeasurementAvroHandlerConsumerServiceImpl implements EnvMeasurem
         log.info("Received plant: {}", value.getPlantInfo());
         log.info("Consumed event from topic {}: key = {} | value = {}", topic, key, value);
 
-        Plant plant = plantService.creatIfNotExists(value.getPlantInfo());
+        Plant plant = plantService.createIfNotExists(value.getPlantInfo());
         EnvironmentalMeasurement environmentalMeasurement =
                 environmentalMeasurementService.convertAndSaveEnvironmentalMeasurement(plant, value);
         log.info("Saved environmental measurement with UUID: {}", environmentalMeasurement.environmentalMeasurementUuid());
